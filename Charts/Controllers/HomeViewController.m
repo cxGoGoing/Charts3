@@ -16,7 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     DDLogInfo(@"12123123");
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(200, 200, 120, 20)];
+    label.font = [UIFont systemFontOfSize:15];
+    label.text = @"monoca2015666";
+    label.transform = CGAffineTransformMakeRotation(-M_PI/4);
+    [self.view addSubview:label];
+
+
     // Do any additional setup after loading the view.
 }
 
