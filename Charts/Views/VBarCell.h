@@ -10,4 +10,5 @@
 
 @interface VBarCell : UITableViewCell
 + (NSString*)cellIdentifier;
+@property (nonatomic,copy)NSString * textString;
 @end

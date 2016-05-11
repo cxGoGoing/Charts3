@@ -7,7 +7,10 @@
 //
 
 #import "VBarCell.h"
-
+@interface VBarCell()
+@property (nonatomic,strong)UILabel * descLabel;
+@property (nonatomic,strong)UILabel * barLabel;
+@end
 @implementation VBarCell
 
 - (void)awakeFromNib {
@@ -19,6 +22,36 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+        [self setUpUI];
+    }
+    return self;
+}
+
+- (void)setTextString:(NSString *)textString{
+    _textString = textString;
+    self.descLabel.text = textString;
+}
+
+- (void)setUpUI{
+
+}
+
+- (UILabel*)descLabel{
+    if(!_descLabel){
+        _descLabel = [[UILabel alloc]init];
+    }
+    return _descLabel;
+}
+
+- (UILabel*)barLabel{
+    if(!_barLabel){
+        _barLabel = [[UILabel alloc]init];
+    }
+    return _barLabel;
 }
 
 + (NSString*)cellIdentifier{
