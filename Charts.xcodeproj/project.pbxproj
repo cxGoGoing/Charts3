@@ -10,6 +10,7 @@
 		4824E88E3EA11F4D3CFC5FEE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA62E70ED21D25AB38FCA890 /* libPods.a */; };
 		5733076A1CE2DE8300DF322A /* LabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 573307691CE2DE8300DF322A /* LabelCell.m */; };
 		575750A31CE308EE00A81AD1 /* VBarBackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 575750A21CE308EE00A81AD1 /* VBarBackGroundView.m */; };
+		575750A61CE3294700A81AD1 /* VBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 575750A51CE3294700A81AD1 /* VBarCell.m */; };
 		579F4A381CDB43EA00D50A3A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A371CDB43EA00D50A3A /* HomeViewController.m */; };
 		579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A3C1CDB45D500D50A3A /* LogUtil.m */; };
 		57E31F891CDB429A0084FA78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E31F881CDB429A0084FA78 /* main.m */; };
@@ -43,6 +44,8 @@
 		573307691CE2DE8300DF322A /* LabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelCell.m; sourceTree = "<group>"; };
 		575750A11CE308EE00A81AD1 /* VBarBackGroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBarBackGroundView.h; sourceTree = "<group>"; };
 		575750A21CE308EE00A81AD1 /* VBarBackGroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarBackGroundView.m; sourceTree = "<group>"; };
+		575750A41CE3294700A81AD1 /* VBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBarCell.h; sourceTree = "<group>"; };
+		575750A51CE3294700A81AD1 /* VBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarCell.m; sourceTree = "<group>"; };
 		579F4A361CDB43EA00D50A3A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		579F4A371CDB43EA00D50A3A /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		579F4A391CDB43FB00D50A3A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 				573307691CE2DE8300DF322A /* LabelCell.m */,
 				575750A11CE308EE00A81AD1 /* VBarBackGroundView.h */,
 				575750A21CE308EE00A81AD1 /* VBarBackGroundView.m */,
+				575750A41CE3294700A81AD1 /* VBarCell.h */,
+				575750A51CE3294700A81AD1 /* VBarCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				5733076A1CE2DE8300DF322A /* LabelCell.m in Sources */,
 				579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */,
 				57E31F8C1CDB429A0084FA78 /* AppDelegate.m in Sources */,
+				575750A61CE3294700A81AD1 /* VBarCell.m in Sources */,
 				575750A31CE308EE00A81AD1 /* VBarBackGroundView.m in Sources */,
 				57E31F891CDB429A0084FA78 /* main.m in Sources */,
 				579F4A381CDB43EA00D50A3A /* HomeViewController.m in Sources */,

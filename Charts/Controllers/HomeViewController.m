@@ -10,10 +10,12 @@
 #import <PureLayout.h>
 #import "LabelCell.h"
 #import "VBarBackGroundView.h"
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+#import "VBarCell.h"
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
+@property (nonatomic,strong)UITableView * tableView;
 @end
 
 @implementation HomeViewController
@@ -26,10 +28,23 @@
     // Do any additional setup after loading the view.
 }
 
+
+- (UITableView*)tableView{
+    if(!_tableView){
+        _tableView = [[UITableView alloc]init];
+        _tableView.frame = CGRectMake(15, 164, [UIScreen mainScreen].bounds.size.width-30, 300);
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [_tableView registerClass:[VBarCell class] forCellReuseIdentifier:[VBarCell cellIdentifier]];
+        _tableView.rowHeight = 60;
+    }
+    return _tableView;
+}
+
 - (VBarBackGroundView*)backGroundView
 {
     if (!_backGroundView) {
-        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(70, 164, 375 - 40, 300)];
+        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(70, 164, 300, 300)];
         _backGroundView.backgroundColor = [UIColor clearColor];
         _backGroundView.userInteractionEnabled = NO;
     }
@@ -39,7 +54,7 @@
 - (void)setUpUI
 {
     [self.view addSubview:self.backGroundView];
-    //[self.view addSubview:self.collectionView];
+    [self.view addSubview:self.tableView];
 }
 
 - (NSMutableArray*)dataArray
@@ -66,6 +81,15 @@
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataArray.count;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    VBarCell * cell = [tableView dequeueReusableCellWithIdentifier:[VBarCell cellIdentifier]];
+    return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView
