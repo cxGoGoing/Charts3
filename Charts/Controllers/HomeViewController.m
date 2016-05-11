@@ -9,69 +9,84 @@
 #import "HomeViewController.h"
 #import <PureLayout.h>
 #import "LabelCell.h"
-@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic,strong) UICollectionView * collectionView;
-@property (nonatomic,strong)NSMutableArray * dataArray;
+#import "VBarBackGroundView.h"
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@property (nonatomic, strong) UICollectionView* collectionView;
+@property (nonatomic, strong) NSMutableArray* dataArray;
+@property (nonatomic, strong) VBarBackGroundView* backGroundView;
 @end
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setUpUI];
-
 
     // Do any additional setup after loading the view.
 }
 
-- (void)setUpUI{
-
-    [self.collectionView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:164];
-    [self.collectionView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:20];
-    [self.collectionView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:20];
-    [self.collectionView autoSetDimension:ALDimensionHeight toSize:300];
-
+- (VBarBackGroundView*)backGroundView
+{
+    if (!_backGroundView) {
+        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(70, 164, 375 - 40, 300)];
+        _backGroundView.backgroundColor = [UIColor clearColor];
+        _backGroundView.userInteractionEnabled = NO;
+    }
+    return _backGroundView;
 }
 
-- (NSMutableArray*)dataArray{
-    if(!_dataArray){
+- (void)setUpUI
+{
+    [self.view addSubview:self.backGroundView];
+    //[self.view addSubview:self.collectionView];
+}
+
+- (NSMutableArray*)dataArray
+{
+    if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSArray * array = @[@"2010-1-1",@"2010-2-1",@"2010-3-1",@"2010-4-1",@"2010-5-1"];
+        NSArray* array = @[ @"2010-1-1", @"2010-2-1", @"2010-3-1", @"2010-4-1", @"2010-5-1",@"2010-1-1", @"2010-2-1", @"2010-3-1", @"2010-4-1" ];
         [_dataArray addObjectsFromArray:array];
     }
     return _dataArray;
 }
 
-- (UICollectionView*)collectionView{
-    if(!_collectionView){
-        UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+- (UICollectionView*)collectionView
+{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 164, 375-40, 300) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        layout.itemSize = CGSizeMake(375-40, 50);
+        layout.itemSize = CGSizeMake(375 - 40, 50);
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView
+{
     return self.dataArray.count;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return 1;
 }
 
-- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    LabelCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([LabelCell class]) forIndexPath:indexPath];
+- (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
+{
+    LabelCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([LabelCell class]) forIndexPath:indexPath];
     cell.textString = self.dataArray[indexPath.section];
     return cell;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
