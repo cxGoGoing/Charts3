@@ -37,7 +37,7 @@
 }
 
 - (void)setUpUI{
-
+    self.contentView.backgroundColor = [UIColor clearColor];
 }
 
 - (UILabel*)descLabel{

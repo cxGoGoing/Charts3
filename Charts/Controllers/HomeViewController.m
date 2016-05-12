@@ -36,6 +36,7 @@
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:[VBarCell class] forCellReuseIdentifier:[VBarCell cellIdentifier]];
+        _tableView.dataSource = self;
         _tableView.rowHeight = 60;
     }
     return _tableView;
@@ -54,7 +55,8 @@
 - (void)setUpUI
 {
     [self.view addSubview:self.backGroundView];
-    [self.view addSubview:self.tableView];
+    //[self.view addSubview:self.tableView];
+    [self.view addSubview:self.collectionView];
 }
 
 - (NSMutableArray*)dataArray
@@ -71,7 +73,7 @@
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 164, 375-40, 300) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 164, [UIScreen mainScreen].bounds.size.width-40, 300) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
