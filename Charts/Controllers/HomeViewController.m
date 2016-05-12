@@ -67,7 +67,7 @@
 {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSArray* array = @[ @"2010-1-1-3-4-5", @"2010-2-12", @"2010-3", @"2010-4-123", @"2010",@"2010-1-1-2", @"2010-2-1", @"2010-3-1", @"2010-4-1" ];
+        NSArray* array = @[ @"2010-1-1-3-4-5", @"2010-2-12", @"2010-3", @"2010-4-123", @"2010",@"2010-1-1-2", @"2010-2-1", @"2010-3-1", @"2010-4-1",@"2010-11",@"2010-223123131",@"2010-2-2-33" ];
         [_dataArray addObjectsFromArray:array];
     }
     return _dataArray;
@@ -77,7 +77,7 @@
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 164, [UIScreen mainScreen].bounds.size.width-40, 300-30) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 164, [UIScreen mainScreen].bounds.size.width-40, 300-20) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];

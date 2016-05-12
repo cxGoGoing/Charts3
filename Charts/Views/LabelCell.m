@@ -25,7 +25,9 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-  
+    if ([self.delegate respondsToSelector:@selector(didUnselectVBarItem)]) {
+        [self.delegate didUnselectVBarItem];
+    }
 }
 
 - (void)setTextString:(NSString*)textString
@@ -39,7 +41,6 @@
 
 - (void)setUpUI
 {
-
     [self.detailButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
     [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];
 

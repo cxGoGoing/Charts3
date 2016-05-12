@@ -7,6 +7,7 @@
 //
 
 #import "VBarCell.h"
+#import <PureLayout.h>
 @interface VBarCell()
 @property (nonatomic,strong)UILabel * descLabel;
 @property (nonatomic,strong)UILabel * barLabel;
@@ -38,6 +39,8 @@
 
 - (void)setUpUI{
     self.contentView.backgroundColor = [UIColor clearColor];
+    [self.descLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeBottom ofView:self.superview];
+    [self.descLabel autoPinEdge:ALEdgeBottom toEdge:ALEdgeLeading ofView:self.contentView];
 }
 
 - (UILabel*)descLabel{
