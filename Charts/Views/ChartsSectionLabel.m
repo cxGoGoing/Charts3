@@ -11,7 +11,8 @@
 @implementation ChartsSectionLabel
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        
+        self.textColor = [UIColor grayColor];
+        self.font  = [UIFont systemFontOfSize:13];
     }
     return self;
 }
