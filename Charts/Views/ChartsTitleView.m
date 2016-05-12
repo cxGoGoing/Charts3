@@ -8,6 +8,7 @@
 
 #import "ChartsTitleView.h"
 #import "ChartsSectionLabel.h"
+#import <PureLayout.h>
 @interface ChartsTitleView()
 @property (nonatomic,strong)UILabel * sectionTitle;
 @property (nonatomic,strong)ChartsSectionLabel * gatherLabel;/**<  汇总  */
@@ -20,11 +21,22 @@
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.alwaysBounceVertical = NO;
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor clearColor];
         [self setUpUI];
     }
     return self;
 }
+
+- (void)reloadData{
+
+}
+
+
+- (void)setUpUI{
+    
+}
+
+#pragma mark getter and setter
 
 - (UILabel*)sectionTitle{
     if(!_sectionTitle){
@@ -32,6 +44,7 @@
         _sectionTitle.font = [UIFont systemFontOfSize:16];
         _sectionTitle.textColor = [UIColor blackColor];
         _sectionTitle.text = @"本部门销售趋势";
+        [self addSubview:_sectionTitle];
     }
     return _sectionTitle;
 }
@@ -40,6 +53,7 @@
     if(!_siftLabel){
         _siftLabel = [[ChartsSectionLabel alloc]init];
         _siftLabel.text = @"维度";
+        [self addSubview:_siftLabel];
     }
     return _siftLabel;
 }
@@ -48,6 +62,7 @@
     if(!_dimensionLabel){
         _dimensionLabel = [[ChartsSectionLabel alloc]init];
         _dimensionLabel.text = @"维度";
+        [self addSubview:_dimensionLabel];
     }
     return _dimensionLabel;
 }
@@ -56,14 +71,12 @@
     if(!_gatherLabel){
         _gatherLabel = [[ChartsSectionLabel alloc]init];
         _gatherLabel.text = @"汇总项";
+        [self addSubview:_gatherLabel];
     }
     return _gatherLabel;
 }
 
 
-- (void)setUpUI{
-
-}
 
 
 @end
