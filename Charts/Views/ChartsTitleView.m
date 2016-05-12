@@ -26,6 +26,16 @@
     return self;
 }
 
+- (UILabel*)sectionTitle{
+    if(!_sectionTitle){
+        _sectionTitle = [[UILabel alloc]init];
+        _sectionTitle.font = [UIFont systemFontOfSize:16];
+        _sectionTitle.textColor = [UIColor blackColor];
+        _sectionTitle.text = @"本部门销售趋势";
+    }
+    return _sectionTitle;
+}
+
 - (ChartsSectionLabel*)siftLabel{
     if(!_siftLabel){
         _siftLabel = [[ChartsSectionLabel alloc]init];
