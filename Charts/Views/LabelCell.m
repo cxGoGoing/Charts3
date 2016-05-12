@@ -8,9 +8,10 @@
 
 #import "LabelCell.h"
 #import <PureLayout.h>
+#import <BlocksKit+UIKit.h>
 @interface LabelCell ()
 @property (nonatomic, strong) UILabel* descLabel;
-@property (nonatomic, strong) UILabel* detailLabel;
+@property (nonatomic, strong) UIButton* detailButton;
 @property (nonatomic,strong)NSLayoutConstraint * widthConstraint;
 @end
 @implementation LabelCell
@@ -21,6 +22,10 @@
         self.contentView.backgroundColor = [UIColor colorWithRed:0.154 green:0.231 blue:1.000 alpha:0.2];
     }
     return self;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+  
 }
 
 - (void)setTextString:(NSString*)textString
@@ -35,25 +40,39 @@
 - (void)setUpUI
 {
 
-    [self.detailLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-    [self.detailLabel autoSetDimension:ALDimensionHeight toSize:30];
+    [self.detailButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];
 
-    [self.detailLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
-    self.widthConstraint = [self.detailLabel autoSetDimension:ALDimensionWidth toSize:20];
+    [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
+    self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:20];
     //[self.descLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
     [self.descLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-    [self.descLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.detailLabel withOffset:0];
+    [self.descLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.detailButton withOffset:0];
 }
+- (UIButton*)detailButton{
+    if(!_detailButton){
+        _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_detailButton setBackgroundColor:[UIColor blueColor]];
+        [_detailButton bk_addEventHandler:^(UIButton * sender) {
+            //DDLogDebug(@"%@",sender);
+           CGRect rect =  [self convertRect:sender.frame toView:self.superview];
 
-- (UILabel*)detailLabel
-{
-    if (!_detailLabel) {
-        _detailLabel = [[UILabel alloc] init];
-        _detailLabel.backgroundColor = [UIColor colorWithRed:0.163 green:1.000 blue:0.514 alpha:1.000];
-        [self.contentView addSubview:_detailLabel];
+            DDLogDebug(@"%@",NSStringFromCGRect(rect));
+        } forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_detailButton];
     }
-    return _detailLabel;
+    return _detailButton;
 }
+//- (UILabel*)detailLabel
+//{
+//    if (!_detailLabel) {
+//        _detailLabel = [[UILabel alloc] init];
+//        _detailLabel.backgroundColor = [UIColor colorWithRed:0.163 green:1.000 blue:0.514 alpha:1.000];
+//        _detailLabel.userInteractionEnabled = YES;
+//        [self.contentView addSubview:_detailLabel];
+//    }
+//    return _detailLabel;
+//}
 
 - (UILabel*)descLabel
 {
