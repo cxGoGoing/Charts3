@@ -11,11 +11,13 @@
 #import "LabelCell.h"
 #import "VBarBackGroundView.h"
 #import "VBarCell.h"
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,ChartViewDelegate>
+#import "ChartsTitleView.h"
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource,ChartViewDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
 @property (nonatomic,strong)UITableView * tableView;
+@property (nonatomic,strong)ChartsTitleView * titleView;/**<  滚动视图  */
 @end
 
 @implementation HomeViewController
@@ -25,27 +27,22 @@
     [super viewDidLoad];
     [self setUpUI];
 
+
     // Do any additional setup after loading the view.
 }
 
+- (ChartsTitleView*)titleView{
+    if(!_titleView){
+        _titleView = [[ChartsTitleView alloc]initWithFrame:CGRectMake(15, 20+64, [UIScreen mainScreen].bounds.size.width-30, 154/2)];
 
-- (UITableView*)tableView{
-    if(!_tableView){
-        _tableView = [[UITableView alloc]init];
-        _tableView.frame = CGRectMake(15, 164, [UIScreen mainScreen].bounds.size.width-40, 300);
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:[VBarCell class] forCellReuseIdentifier:[VBarCell cellIdentifier]];
-        _tableView.dataSource = self;
-        _tableView.rowHeight = 60;
     }
-    return _tableView;
+    return _titleView;
 }
 
 - (VBarBackGroundView*)backGroundView
 {
     if (!_backGroundView) {
-        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(70, 164, 300, 300)];
+        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(70, 131+64, 300, 300)];
         _backGroundView.backgroundColor = [UIColor clearColor];
         _backGroundView.userInteractionEnabled = NO;
     }
@@ -54,8 +51,9 @@
 
 - (void)setUpUI
 {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.view addSubview:self.titleView];
     [self.view addSubview:self.backGroundView];
-    //[self.view addSubview:self.tableView];
     [self.view addSubview:self.collectionView];
 }
 
@@ -77,7 +75,7 @@
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 164, [UIScreen mainScreen].bounds.size.width-40, 300-20) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131+64, [UIScreen mainScreen].bounds.size.width-40, 300-20) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -91,14 +89,6 @@
     return _collectionView;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataArray.count;
-}
-
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    VBarCell * cell = [tableView dequeueReusableCellWithIdentifier:[VBarCell cellIdentifier]];
-    return cell;
-}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView
 {

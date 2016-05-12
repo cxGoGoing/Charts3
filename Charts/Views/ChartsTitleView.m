@@ -20,7 +20,7 @@
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.alwaysBounceVertical = NO;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor redColor];
         [self setUpUI];
     }
     return self;
