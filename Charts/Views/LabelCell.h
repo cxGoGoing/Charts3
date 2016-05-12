@@ -11,4 +11,5 @@
 @interface LabelCell : UICollectionViewCell
 @property (nonatomic,copy) NSString * textString;
 @property (nonatomic,weak)id<ChartViewDelegate> delegate;
+@property (nonatomic,strong)NSIndexPath * indexPath;
 @end

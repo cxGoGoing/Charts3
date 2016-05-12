@@ -53,10 +53,9 @@
         _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_detailButton setBackgroundColor:[UIColor blueColor]];
         [_detailButton bk_addEventHandler:^(UIButton * sender) {
-            //DDLogDebug(@"%@",sender);
            CGRect rect =  [self convertRect:sender.frame toView:self.superview];
             if([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:)]){
-                [self.delegate userClickedOnVBarIndexItem:1];
+                [self.delegate userClickedOnVBarIndexItem:self.indexPath.section];
             }
             DDLogDebug(@"%@",NSStringFromCGRect(rect));
         } forControlEvents:UIControlEventTouchUpInside];

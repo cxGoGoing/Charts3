@@ -11,7 +11,7 @@
 #import "LabelCell.h"
 #import "VBarBackGroundView.h"
 #import "VBarCell.h"
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,ChartViewDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
@@ -57,6 +57,10 @@
     [self.view addSubview:self.backGroundView];
     //[self.view addSubview:self.tableView];
     [self.view addSubview:self.collectionView];
+}
+
+- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex{
+    DDLogInfo(@"%zi",vBarIndex);
 }
 
 - (NSMutableArray*)dataArray
@@ -110,6 +114,8 @@
 {
     LabelCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([LabelCell class]) forIndexPath:indexPath];
     cell.textString = self.dataArray[indexPath.section];
+    cell.indexPath = indexPath;
+    cell.delegate = self;
     return cell;
 }
 
