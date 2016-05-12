@@ -13,6 +13,8 @@
 		575750A61CE3294700A81AD1 /* VBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 575750A51CE3294700A81AD1 /* VBarCell.m */; };
 		579F4A381CDB43EA00D50A3A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A371CDB43EA00D50A3A /* HomeViewController.m */; };
 		579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A3C1CDB45D500D50A3A /* LogUtil.m */; };
+		57C1F23A1CE471880030A67D /* ChartsTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1F2391CE471880030A67D /* ChartsTitleView.m */; };
+		57C1F23D1CE477B50030A67D /* ChartsSectionLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1F23C1CE477B50030A67D /* ChartsSectionLabel.m */; };
 		57E31F891CDB429A0084FA78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E31F881CDB429A0084FA78 /* main.m */; };
 		57E31F8C1CDB429A0084FA78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E31F8B1CDB429A0084FA78 /* AppDelegate.m */; };
 		57E31F8E1CDB429A0084FA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E31F8D1CDB429A0084FA78 /* Assets.xcassets */; };
@@ -52,6 +54,10 @@
 		579F4A391CDB43FB00D50A3A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		579F4A3B1CDB45D500D50A3A /* LogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogUtil.h; sourceTree = "<group>"; };
 		579F4A3C1CDB45D500D50A3A /* LogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogUtil.m; sourceTree = "<group>"; };
+		57C1F2381CE471880030A67D /* ChartsTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsTitleView.h; sourceTree = "<group>"; };
+		57C1F2391CE471880030A67D /* ChartsTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsTitleView.m; sourceTree = "<group>"; };
+		57C1F23B1CE477B50030A67D /* ChartsSectionLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsSectionLabel.h; sourceTree = "<group>"; };
+		57C1F23C1CE477B50030A67D /* ChartsSectionLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsSectionLabel.m; sourceTree = "<group>"; };
 		57E31F841CDB429A0084FA78 /* Charts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Charts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E31F881CDB429A0084FA78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57E31F8A1CDB429A0084FA78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,6 +110,10 @@
 				575750A21CE308EE00A81AD1 /* VBarBackGroundView.m */,
 				575750A41CE3294700A81AD1 /* VBarCell.h */,
 				575750A51CE3294700A81AD1 /* VBarCell.m */,
+				57C1F2381CE471880030A67D /* ChartsTitleView.h */,
+				57C1F2391CE471880030A67D /* ChartsTitleView.m */,
+				57C1F23B1CE477B50030A67D /* ChartsSectionLabel.h */,
+				57C1F23C1CE477B50030A67D /* ChartsSectionLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -391,10 +401,12 @@
 			files = (
 				5733076A1CE2DE8300DF322A /* LabelCell.m in Sources */,
 				579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */,
+				57C1F23D1CE477B50030A67D /* ChartsSectionLabel.m in Sources */,
 				57E31F8C1CDB429A0084FA78 /* AppDelegate.m in Sources */,
 				575750A61CE3294700A81AD1 /* VBarCell.m in Sources */,
 				575750A31CE308EE00A81AD1 /* VBarBackGroundView.m in Sources */,
 				57E31F891CDB429A0084FA78 /* main.m in Sources */,
+				57C1F23A1CE471880030A67D /* ChartsTitleView.m in Sources */,
 				579F4A381CDB43EA00D50A3A /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
