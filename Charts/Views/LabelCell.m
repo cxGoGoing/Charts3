@@ -8,53 +8,59 @@
 
 #import "LabelCell.h"
 #import <PureLayout.h>
-@interface LabelCell()
-@property (nonatomic,strong)UILabel * descLabel;
-@property (nonatomic,strong)UILabel * detailLabel;
+@interface LabelCell ()
+@property (nonatomic, strong) UILabel* descLabel;
+@property (nonatomic, strong) UILabel* detailLabel;
 @end
 @implementation LabelCell
-- (instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
         [self setUpUI];
-        self.contentView.backgroundColor = [UIColor clearColor];
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.154 green:0.231 blue:1.000 alpha:0.2];
     }
     return self;
 }
 
-- (void)setTextString:(NSString *)textString{
+- (void)setTextString:(NSString*)textString
+{
     _textString = textString;
     self.descLabel.text = textString;
 }
 
-- (void)setUpUI{
-    [self.descLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-    [self.detailLabel autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10];
-    [self.detailLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom];
+- (void)setUpUI
+{
 
-    [self.detailLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.descLabel withOffset:10];
-    [self.detailLabel autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:20];
-    [self.detailLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:20];
-    [self.detailLabel autoSetDimension:ALDimensionWidth toSize:200];
+    [self.detailLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    [self.detailLabel autoSetDimension:ALDimensionHeight toSize:30];
+    [self.detailLabel autoSetDimension:ALDimensionWidth toSize:100];
+    [self.detailLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
 
-
+    //[self.descLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    [self.descLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
+    [self.descLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.detailLabel withOffset:0];
 }
 
-- (UILabel*)detailLabel{
-    if(!_detailLabel){
-        _detailLabel = [[UILabel alloc]init];
+- (UILabel*)detailLabel
+{
+    if (!_detailLabel) {
+        _detailLabel = [[UILabel alloc] init];
         _detailLabel.backgroundColor = [UIColor yellowColor];
         [self.contentView addSubview:_detailLabel];
     }
     return _detailLabel;
 }
 
-- (UILabel*)descLabel{
-    if(!_descLabel){
-        _descLabel = [[UILabel alloc]init];
+- (UILabel*)descLabel
+{
+    if (!_descLabel) {
+        _descLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_descLabel];
         _descLabel.font = [UIFont systemFontOfSize:11];
         _descLabel.textAlignment = NSTextAlignmentCenter;
-        _descLabel.transform = CGAffineTransformMakeRotation(-M_PI_4);
+        //_descLabel.transform = CGAffineTransformMakeRotation(-M_PI / 6);
+        _descLabel.layer.affineTransform = CGAffineTransformMakeRotation(-M_PI / 6);;
+        //_descLabel.layer.anchorPoint = CGPointMake(0.5, 1);
     }
     return _descLabel;
 }

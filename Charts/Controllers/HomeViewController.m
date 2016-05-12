@@ -32,7 +32,7 @@
 - (UITableView*)tableView{
     if(!_tableView){
         _tableView = [[UITableView alloc]init];
-        _tableView.frame = CGRectMake(15, 164, [UIScreen mainScreen].bounds.size.width-30, 300);
+        _tableView.frame = CGRectMake(15, 164, [UIScreen mainScreen].bounds.size.width-40, 300);
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:[VBarCell class] forCellReuseIdentifier:[VBarCell cellIdentifier]];
@@ -63,7 +63,7 @@
 {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSArray* array = @[ @"2010-1-1", @"2010-2-1", @"2010-3-1", @"2010-4-1", @"2010-5-1",@"2010-1-1", @"2010-2-1", @"2010-3-1", @"2010-4-1" ];
+        NSArray* array = @[ @"2010-1-1-3-4-5", @"2010-2-1", @"2010-3-1", @"2010-4-1", @"2010-5-1",@"2010-1-1", @"2010-2-1", @"2010-3-1", @"2010-4-1" ];
         [_dataArray addObjectsFromArray:array];
     }
     return _dataArray;
@@ -79,7 +79,9 @@
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        layout.itemSize = CGSizeMake(375 - 40, 50);
+        _collectionView.showsVerticalScrollIndicator = NO;
+        _collectionView.alwaysBounceVertical = YES;
+        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width-40, 50);
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
