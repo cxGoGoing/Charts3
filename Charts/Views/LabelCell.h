@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ChartViewDelegate.h"
 @interface LabelCell : UICollectionViewCell
 @property (nonatomic,copy) NSString * textString;
+@property (nonatomic,weak)id<ChartViewDelegate> delegate;
 @end

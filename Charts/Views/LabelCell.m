@@ -45,7 +45,6 @@
 
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:20];
-    //[self.descLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
     [self.descLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
     [self.descLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.detailButton withOffset:0];
 }
@@ -56,23 +55,15 @@
         [_detailButton bk_addEventHandler:^(UIButton * sender) {
             //DDLogDebug(@"%@",sender);
            CGRect rect =  [self convertRect:sender.frame toView:self.superview];
-
+            if([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:)]){
+                [self.delegate userClickedOnVBarIndexItem:1];
+            }
             DDLogDebug(@"%@",NSStringFromCGRect(rect));
         } forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_detailButton];
     }
     return _detailButton;
 }
-//- (UILabel*)detailLabel
-//{
-//    if (!_detailLabel) {
-//        _detailLabel = [[UILabel alloc] init];
-//        _detailLabel.backgroundColor = [UIColor colorWithRed:0.163 green:1.000 blue:0.514 alpha:1.000];
-//        _detailLabel.userInteractionEnabled = YES;
-//        [self.contentView addSubview:_detailLabel];
-//    }
-//    return _detailLabel;
-//}
 
 - (UILabel*)descLabel
 {
