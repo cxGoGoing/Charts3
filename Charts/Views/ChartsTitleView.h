@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ChartsTitleView : UIScrollView
-@property (nonatomic,strong)NSMutableArray * dataArray;
+@property (nonatomic,strong)NSMutableArray <NSString*>* dataArray;
 - (void)reloadData;
 @end
