@@ -11,13 +11,13 @@
 #import "VBarBackGroundView.h"
 #import "VBarCell.h"
 #import "ChartsTitleView.h"
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource,ChartViewDelegate>
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
-@property (nonatomic,strong)UITableView * tableView;
-@property (nonatomic,strong)ChartsTitleView * titleView;/**<  滚动视图  */
-@property (nonatomic,strong)UIButton * siftBtn;
+@property (nonatomic, strong) UITableView* tableView;
+@property (nonatomic, strong) ChartsTitleView* titleView; /**<  滚动视图  */
+@property (nonatomic, strong) UIButton* siftBtn;
 @end
 
 @implementation HomeViewController
@@ -27,20 +27,21 @@
     [super viewDidLoad];
     [self setUpUI];
 
-
     // Do any additional setup after loading the view.
 }
 
-- (ChartsTitleView*)titleView{
-    if(!_titleView){
-        _titleView = [[ChartsTitleView alloc]initWithFrame:CGRectMake(15, 20+64, [UIScreen mainScreen].bounds.size.width-30, 154/2)];
-        _titleView.dataArray = @[@"销售额总和",@"客户名",@"筛选条件1,筛选条件2,筛选条件3,筛选条件4,筛选条件5,筛选条件6,筛选条件7,筛选条件8,筛选条件9,筛选条件10"];
-        _titleView.contentSize = CGSizeMake(calTextSize(_titleView.dataArray.lastObject, 13).width+36, 0);
+- (ChartsTitleView*)titleView
+{
+    if (!_titleView) {
+        _titleView = [[ChartsTitleView alloc] initWithFrame:CGRectMake(15, 20 + 64, [UIScreen mainScreen].bounds.size.width - 30, 154 / 2)];
+        _titleView.dataArray = @[ @"销售额总和", @"客户名", @"筛选条件1,筛选条件2,筛选条件3,筛选条件4,筛选条件5,筛选条件6,筛选条件7,筛选条件8,筛选条件9,筛选条件10" ];
+        _titleView.contentSize = CGSizeMake(calTextSize(_titleView.dataArray.lastObject, 13).width + 36, 0);
     }
     return _titleView;
 }
 
-static inline CGSize calTextSize(NSString * text,NSInteger font){
+static inline CGSize calTextSize(NSString* text, NSInteger font)
+{
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
     dictionary[NSFontAttributeName] = [UIFont systemFontOfSize:font];
     CGSize size = [text sizeWithAttributes:dictionary];
@@ -50,19 +51,19 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
 - (VBarBackGroundView*)backGroundView
 {
     if (!_backGroundView) {
-        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(85, 131+64, [UIScreen mainScreen].bounds.size.width-15-85, 380)];
+        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(85, 131 + 64, [UIScreen mainScreen].bounds.size.width - 15 - 85, 380)];
         _backGroundView.backgroundColor = [UIColor clearColor];
         _backGroundView.userInteractionEnabled = NO;
     }
     return _backGroundView;
 }
 
-- (UIButton*)siftBtn{
-    if(!_siftBtn){
+- (UIButton*)siftBtn
+{
+    if (!_siftBtn) {
         _siftBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
         [_siftBtn addTarget:self action:@selector(siftData:) forControlEvents:UIControlEventTouchUpInside];
-        _siftBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width-30, [UIScreen mainScreen].bounds.size.height-30, 30, 30);
-        
+        _siftBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 30, [UIScreen mainScreen].bounds.size.height - 30, 30, 30);
     }
     return _siftBtn;
 }
@@ -71,7 +72,7 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
 {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSArray* array = @[@"北首开知语城",@"小米科技棒棒哒",@"中关村科技",@"2015-05",@"2015-06",@"2015-07",@"2015-08",@"2015-09",@"2015-11",@"2015-12-31",@"2016-12-01-1"];
+        NSArray* array = @[ @"北首开知语城", @"小米科技棒棒哒", @"中关村科技", @"2015-05", @"2015-06", @"2015-07", @"2015-08", @"2015-09", @"2015-11", @"2015-12-31", @"2016-12-01-1", @"北首开知语城", @"小米科技棒棒哒", @"中关村科技", @"2015-05", @"2015-06", @"2015-07", @"2015-08", @"2015-09", @"2015-11", @"2015-12-31", @"2016-12-01-1" ];
         [_dataArray addObjectsFromArray:array];
     }
     return _dataArray;
@@ -81,7 +82,7 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131+64, [UIScreen mainScreen].bounds.size.width-30, 350) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, 350) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -90,20 +91,19 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 25, 0);
-        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width-40, 40);
+        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, 40);
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
 }
 
-
-
-- (void)siftData:(UIButton*)btn{
-    self.titleView.dataArray = @[@"销售总和",@"客户名",@"筛选条件"];
+- (void)siftData:(UIButton*)btn
+{
+    self.titleView.dataArray = @[ @"销售总和", @"客户名", @"筛选条件" ];
     [self.dataArray removeAllObjects];
-    [self.dataArray addObjectsFromArray:@[@"1",@"12",@"123",@"1234"]];
+    [self.dataArray addObjectsFromArray:@[ @"1", @"12", @"123", @"1234" ]];
     [self.collectionView reloadData];
-    _titleView.contentSize = CGSizeMake(calTextSize(self.titleView.dataArray.lastObject, 13).width+36, 0);
+    _titleView.contentSize = CGSizeMake(calTextSize(self.titleView.dataArray.lastObject, 13).width + 36, 0);
 }
 
 - (void)setUpUI
@@ -115,10 +115,10 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
     [self.view addSubview:self.siftBtn];
 }
 
-- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex{
-    DDLogInfo(@"%zi",vBarIndex);
+- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex
+{
+    DDLogInfo(@"%zi", vBarIndex);
 }
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView
 {
