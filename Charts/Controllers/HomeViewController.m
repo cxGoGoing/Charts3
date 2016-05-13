@@ -71,7 +71,7 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
 {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSArray* array = @[ @"备受开支禹城",@"2010-1-1-3-4-5", @"2010-2-12", @"2010-3", @"2010-4-123", @"2010",@"2010-1-1-2", @"2010-2-1", @"2010-3-1", @"2010-4-1",@"2010-11",@"2010-223123131",@"2010-2-2-33",@"012345678912"];
+        NSArray* array = @[@"北首开知语城",@"小米科技棒棒哒",@"中关村科技",@"2015-05",@"2015-06",@"2015-07",@"2015-08",@"2015-09",@"2015-11",@"2015-12-31",@"2016-12-01-1"];
         [_dataArray addObjectsFromArray:array];
     }
     return _dataArray;
@@ -81,7 +81,7 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131+64, [UIScreen mainScreen].bounds.size.width-30, 360) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131+64, [UIScreen mainScreen].bounds.size.width-30, 350) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -89,7 +89,7 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
-        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 25, 0);
         layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width-40, 40);
         [self.view addSubview:_collectionView];
     }
@@ -100,6 +100,9 @@ static inline CGSize calTextSize(NSString * text,NSInteger font){
 
 - (void)siftData:(UIButton*)btn{
     self.titleView.dataArray = @[@"销售总和",@"客户名",@"筛选条件"];
+    [self.dataArray removeAllObjects];
+    [self.dataArray addObjectsFromArray:@[@"1",@"12",@"123",@"1234"]];
+    [self.collectionView reloadData];
     _titleView.contentSize = CGSizeMake(calTextSize(self.titleView.dataArray.lastObject, 13).width+36, 0);
 }
 

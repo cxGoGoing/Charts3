@@ -9,6 +9,7 @@
 #import "LabelCell.h"
 #import <PureLayout.h>
 #import <BlocksKit+UIKit.h>
+#import "UIView+Extension.h"
 @interface LabelCell ()
 @property (nonatomic, strong) UILabel* descLabel;
 @property (nonatomic, strong) UIButton* detailButton;
@@ -19,7 +20,7 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setUpUI];
-        self.contentView.backgroundColor = [UIColor colorWithRed:0.154 green:0.231 blue:1.000 alpha:0.2];
+        //self.contentView.backgroundColor = [UIColor colorWithRed:0.154 green:0.231 blue:1.000 alpha:0.2];
     }
     return self;
 }
@@ -46,8 +47,7 @@
 
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:20];
-    [self.descLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-    [self.descLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.detailButton withOffset:-5];
+    self.descLabel.frame = CGRectMake(-5, 50, 90, 20);
 }
 - (UIButton*)detailButton{
     if(!_detailButton){
@@ -71,11 +71,10 @@
         _descLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_descLabel];
         _descLabel.font = [UIFont systemFontOfSize:10];
-        _descLabel.textAlignment = NSTextAlignmentCenter;
-        //_descLabel.transform = CGAffineTransformMakeRotation(-M_PI / 6);
+        _descLabel.textAlignment = NSTextAlignmentRight;
         _descLabel.layer.affineTransform = CGAffineTransformMakeRotation(-M_PI / 6);
         ;
-        //_descLabel.layer.anchorPoint = CGPointMake(0.5, 1);
+        _descLabel.layer.anchorPoint = CGPointMake(0.5, 1);
     }
     return _descLabel;
 }
