@@ -33,7 +33,8 @@
     return self;
 }
 
-- (void)setDataArray:(NSMutableArray *)dataArray{
+- (void)setDataArray:(NSArray<NSString *> *)dataArray{
+    NSAssert(dataArray.count>0, @"数组数量大于0");
     _dataArray = [dataArray copy];
     self.gatherDetail.text = dataArray.firstObject;
     self.dimensionDetail.text = dataArray[1];
@@ -41,6 +42,7 @@
 
     DDLogInfo(@"%.2f", calWidth(self.siftLabel.text));
 }
+
 
 static inline CGFloat calWidth(NSString*text){
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
@@ -52,11 +54,6 @@ static inline CGFloat calWidth(NSString*text){
 - (void)didMoveToSuperview{
     
 }
-
-- (void)reloadData{
-
-}
-
 
 - (void)setUpUI{
     [self.sectionTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading];

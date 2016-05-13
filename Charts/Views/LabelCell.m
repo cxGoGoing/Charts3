@@ -34,20 +34,20 @@
 {
     _textString = textString;
     self.descLabel.text = textString;
-    self.widthConstraint.constant = textString.length*20;
+    self.widthConstraint.constant = (textString.length+4)*10;
     [self setNeedsLayout];
 
 }
 
 - (void)setUpUI
 {
-    [self.detailButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10];
     [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];
 
-    [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
+    [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:20];
     [self.descLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-    [self.descLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.detailButton withOffset:0];
+    [self.descLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.detailButton withOffset:-5];
 }
 - (UIButton*)detailButton{
     if(!_detailButton){
@@ -70,7 +70,7 @@
     if (!_descLabel) {
         _descLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_descLabel];
-        _descLabel.font = [UIFont systemFontOfSize:11];
+        _descLabel.font = [UIFont systemFontOfSize:10];
         _descLabel.textAlignment = NSTextAlignmentCenter;
         //_descLabel.transform = CGAffineTransformMakeRotation(-M_PI / 6);
         _descLabel.layer.affineTransform = CGAffineTransformMakeRotation(-M_PI / 6);

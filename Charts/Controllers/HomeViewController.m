@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import <PureLayout.h>
 #import "LabelCell.h"
 #import "VBarBackGroundView.h"
 #import "VBarCell.h"
@@ -18,6 +17,7 @@
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
 @property (nonatomic,strong)UITableView * tableView;
 @property (nonatomic,strong)ChartsTitleView * titleView;/**<  滚动视图  */
+@property (nonatomic,strong)UIButton * siftBtn;
 @end
 
 @implementation HomeViewController
@@ -34,7 +34,7 @@
 - (ChartsTitleView*)titleView{
     if(!_titleView){
         _titleView = [[ChartsTitleView alloc]initWithFrame:CGRectMake(15, 20+64, [UIScreen mainScreen].bounds.size.width-30, 154/2)];
-        _titleView.dataArray = [NSMutableArray arrayWithArray:@[@"销售额总和",@"客户名",@"筛选条件1,筛选条件2,筛选条件3,筛选条件4,筛选条件5,筛选条件6,筛选条件7,筛选条件8,筛选条件9,筛选条件10"]];
+        _titleView.dataArray = @[@"销售额总和",@"客户名",@"筛选条件1,筛选条件2,筛选条件3,筛选条件4,筛选条件5,筛选条件6,筛选条件7,筛选条件8,筛选条件9,筛选条件10"];
         NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
         dictionary[NSFontAttributeName] = [UIFont systemFontOfSize:13];
         CGSize size = [_titleView.dataArray.lastObject sizeWithAttributes:dictionary];
@@ -46,30 +46,28 @@
 - (VBarBackGroundView*)backGroundView
 {
     if (!_backGroundView) {
-        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(70, 131+64, 300, 300)];
+        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(85, 131+64, [UIScreen mainScreen].bounds.size.width-15-85, 380)];
         _backGroundView.backgroundColor = [UIColor clearColor];
         _backGroundView.userInteractionEnabled = NO;
     }
     return _backGroundView;
 }
 
-- (void)setUpUI
-{
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.view addSubview:self.titleView];
-    [self.view addSubview:self.backGroundView];
-    [self.view addSubview:self.collectionView];
-}
-
-- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex{
-    DDLogInfo(@"%zi",vBarIndex);
+- (UIButton*)siftBtn{
+    if(!_siftBtn){
+        _siftBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        [_siftBtn addTarget:self action:@selector(siftData:) forControlEvents:UIControlEventTouchUpInside];
+        _siftBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width-30, [UIScreen mainScreen].bounds.size.height-30, 30, 30);
+        
+    }
+    return _siftBtn;
 }
 
 - (NSMutableArray*)dataArray
 {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSArray* array = @[ @"2010-1-1-3-4-5", @"2010-2-12", @"2010-3", @"2010-4-123", @"2010",@"2010-1-1-2", @"2010-2-1", @"2010-3-1", @"2010-4-1",@"2010-11",@"2010-223123131",@"2010-2-2-33" ];
+        NSArray* array = @[ @"备受开支禹城",@"2010-1-1-3-4-5", @"2010-2-12", @"2010-3", @"2010-4-123", @"2010",@"2010-1-1-2", @"2010-2-1", @"2010-3-1", @"2010-4-1",@"2010-11",@"2010-223123131",@"2010-2-2-33",@"012345678912"];
         [_dataArray addObjectsFromArray:array];
     }
     return _dataArray;
@@ -79,7 +77,7 @@
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131+64, [UIScreen mainScreen].bounds.size.width-40, 300-20) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131+64, [UIScreen mainScreen].bounds.size.width-30, 360) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -87,10 +85,30 @@
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
-        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width-40, 50);
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width-40, 40);
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
+}
+
+
+
+- (void)siftData:(UIButton*)btn{
+    self.titleView.dataArray = @[@"销售总和",@"客户名",@"筛选条件"];
+}
+
+- (void)setUpUI
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.view addSubview:self.titleView];
+    [self.view addSubview:self.backGroundView];
+    [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.siftBtn];
+}
+
+- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex{
+    DDLogInfo(@"%zi",vBarIndex);
 }
 
 
