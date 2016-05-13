@@ -8,6 +8,7 @@
 
 #import "ChartsTitleView.h"
 #import "ChartsSectionLabel.h"
+#import "UIView+Extension.h"
 #import <PureLayout.h>
 @interface ChartsTitleView()
 @property (nonatomic,strong)UILabel * sectionTitle;
@@ -33,7 +34,14 @@
 
 
 - (void)setUpUI{
-    
+    [self.sectionTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [self.sectionTitle autoPinEdgeToSuperviewEdge:ALEdgeTop];
+    [self.gatherLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [self.gatherLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.sectionTitle withOffset:6];
+    [self.dimensionLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [self.dimensionLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.gatherLabel withOffset:3];
+    [self.siftLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.dimensionLabel withOffset:3];
+    [self.siftLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
 }
 
 #pragma mark getter and setter
