@@ -35,12 +35,16 @@
     if(!_titleView){
         _titleView = [[ChartsTitleView alloc]initWithFrame:CGRectMake(15, 20+64, [UIScreen mainScreen].bounds.size.width-30, 154/2)];
         _titleView.dataArray = @[@"销售额总和",@"客户名",@"筛选条件1,筛选条件2,筛选条件3,筛选条件4,筛选条件5,筛选条件6,筛选条件7,筛选条件8,筛选条件9,筛选条件10"];
-        NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
-        dictionary[NSFontAttributeName] = [UIFont systemFontOfSize:13];
-        CGSize size = [_titleView.dataArray.lastObject sizeWithAttributes:dictionary];
-        _titleView.contentSize = CGSizeMake(size.width+36, 0);
+        _titleView.contentSize = CGSizeMake(calTextSize(_titleView.dataArray.lastObject, 13).width+36, 0);
     }
     return _titleView;
+}
+
+static inline CGSize calTextSize(NSString * text,NSInteger font){
+    NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
+    dictionary[NSFontAttributeName] = [UIFont systemFontOfSize:font];
+    CGSize size = [text sizeWithAttributes:dictionary];
+    return size;
 }
 
 - (VBarBackGroundView*)backGroundView
@@ -96,6 +100,7 @@
 
 - (void)siftData:(UIButton*)btn{
     self.titleView.dataArray = @[@"销售总和",@"客户名",@"筛选条件"];
+    _titleView.contentSize = CGSizeMake(calTextSize(self.titleView.dataArray.lastObject, 13).width+36, 0);
 }
 
 - (void)setUpUI
