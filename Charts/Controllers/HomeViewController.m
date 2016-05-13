@@ -38,7 +38,7 @@
         NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
         dictionary[NSFontAttributeName] = [UIFont systemFontOfSize:13];
         CGSize size = [_titleView.dataArray.lastObject sizeWithAttributes:dictionary];
-        _titleView.contentSize = CGSizeMake(size.width+100, 0);
+        _titleView.contentSize = CGSizeMake(size.width+36, 0);
     }
     return _titleView;
 }

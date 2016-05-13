@@ -39,7 +39,14 @@
     self.dimensionDetail.text = dataArray[1];
     self.siftDetail.text = dataArray.lastObject;
 
+    DDLogInfo(@"%.2f", calWidth(self.siftLabel.text));
+}
 
+static inline CGFloat calWidth(NSString*text){
+    NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
+    dictionary[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    CGSize size = [text sizeWithAttributes:dictionary];
+    return size.width+10;
 }
 
 - (void)didMoveToSuperview{
@@ -110,7 +117,8 @@
 - (ChartsSectionLabel*)siftLabel{
     if(!_siftLabel){
         _siftLabel = [[ChartsSectionLabel alloc]init];
-        _siftLabel.text = @"维度";
+        _siftLabel.text = @"筛选";
+
         [self addSubview:_siftLabel];
     }
     return _siftLabel;
