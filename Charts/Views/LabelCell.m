@@ -51,11 +51,13 @@ static const CGFloat kAnimationTime = 0.5;
 {
     _textString = textString;
     self.descLabel.text = textString;
-    self.barLayer = [self newBarLayerWithLength:(textString.length + 4) * 10 borderWidth:30 fillColor:[UIColor clearColor] borderColor:[UIColor greenColor]];
-    [self.contentView.layer addSublayer:self.barLayer];
-    [self addAnimation];
+//    self.barLayer = [self newBarLayerWithLength:(textString.length + 4) * 10 borderWidth:30 fillColor:[UIColor clearColor] borderColor:[UIColor greenColor]];
+//    [self.contentView.layer addSublayer:self.barLayer];
+//    [self addAnimation];
     self.widthConstraint.constant = (textString.length+4)*10;
-    [self setNeedsLayout];
+
+
+    //[self setNeedsLayout];
 }
 
 - (void)setUpUI
@@ -65,7 +67,7 @@ static const CGFloat kAnimationTime = 0.5;
     [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];
 
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
-    self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:20];
+    self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:0];
 }
 
 - (UIButton*)detailButton{
