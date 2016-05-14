@@ -34,7 +34,6 @@ static const CGFloat kAnimationTime = 0.5;
 }
 
 - (void)addAnimation{
-
     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     animation.duration = kAnimationTime;
     animation.fromValue = @0;
@@ -49,15 +48,12 @@ static const CGFloat kAnimationTime = 0.5;
 
 - (void)setTextString:(NSString*)textString
 {
-    _textString = textString;
+    _textString = [textString copy];
     self.descLabel.text = textString;
-//    self.barLayer = [self newBarLayerWithLength:(textString.length + 4) * 10 borderWidth:30 fillColor:[UIColor clearColor] borderColor:[UIColor greenColor]];
-//    [self.contentView.layer addSublayer:self.barLayer];
-//    [self addAnimation];
     self.widthConstraint.constant = (textString.length+4)*10;
+    self.barLayer.path = [self barLayerPathWith:(textString.length+4)*10].CGPath;
+    [self addAnimation];
 
-
-    //[self setNeedsLayout];
 }
 
 - (void)setUpUI
@@ -68,6 +64,7 @@ static const CGFloat kAnimationTime = 0.5;
 
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:0];
+    [self.contentView.layer addSublayer:self.barLayer];
 }
 
 - (UIButton*)detailButton{
@@ -86,18 +83,23 @@ static const CGFloat kAnimationTime = 0.5;
     return _detailButton;
 }
 
-- (CAShapeLayer*)newBarLayerWithLength:(CGFloat)length borderWidth:(CGFloat)borderWidth fillColor:(UIColor*)fillColor borderColor:(UIColor*)borderColor
-{
-    CAShapeLayer* line = [CAShapeLayer layer];
+- (CAShapeLayer*)barLayer{
+    if(!_barLayer){
+        _barLayer = [CAShapeLayer layer];
+        _barLayer.strokeColor = [UIColor redColor].CGColor;
+        _barLayer.fillColor = [UIColor clearColor].CGColor;
+        _barLayer.lineWidth = 30;
+    }
+    return _barLayer;
+}
+
+- (UIBezierPath*)barLayerPathWith:(CGFloat)length{
     UIBezierPath * beizerPath = [UIBezierPath bezierPath];
     [beizerPath moveToPoint:CGPointMake(60, 25)];
     [beizerPath addLineToPoint:CGPointMake(length+60, 25)];
-    line.strokeColor = borderColor.CGColor;
-    line.fillColor = fillColor.CGColor;
-    line.lineWidth = borderWidth;
-    line.path = beizerPath.CGPath;
-    return line;
+    return beizerPath;
 }
+
 
 - (UILabel*)descLabel
 {
