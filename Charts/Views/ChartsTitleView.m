@@ -74,6 +74,7 @@ static inline CGFloat calWidth(NSString*text){
 
     [self.siftDetail autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.siftLabel withOffset:10];
     [self.siftDetail autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.siftLabel];
+
 }
 
 #pragma mark getter and setter
