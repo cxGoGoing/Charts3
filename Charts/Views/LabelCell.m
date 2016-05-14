@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIButton* detailButton;
 @property (nonatomic, strong) NSLayoutConstraint* widthConstraint;
 @property (nonatomic, strong) CAShapeLayer* barLayer;
+@property (nonatomic,strong) CABasicAnimation * barAnimation;
 @end
 @implementation LabelCell
 static const CGFloat kAnimationTime = 0.5;
@@ -33,18 +34,19 @@ static const CGFloat kAnimationTime = 0.5;
     }
 }
 
-- (void)addAnimation{
-    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.duration = kAnimationTime;
-    animation.fromValue = @0;
-    animation.toValue = @1;
-    animation.delegate = self;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.removedOnCompletion = YES;
-    [self.barLayer addAnimation:animation forKey:@"circleAnimation"];
+- (CABasicAnimation*)barAnimation{
+    if(!_barAnimation){
+        _barAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+        _barAnimation.duration = kAnimationTime;
+        _barAnimation.fromValue = @0;
+        _barAnimation.toValue = @1;
+        _barAnimation.delegate = self;
+        _barAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        _barAnimation.removedOnCompletion = YES;
+
+    }
+    return _barAnimation;
 }
-
-
 
 - (void)setTextString:(NSString*)textString
 {
@@ -52,7 +54,7 @@ static const CGFloat kAnimationTime = 0.5;
     self.descLabel.text = textString;
     self.widthConstraint.constant = (textString.length+4)*10;
     self.barLayer.path = [self barLayerPathWith:(textString.length+4)*10].CGPath;
-    [self addAnimation];
+    [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
 
 }
 
