@@ -7,7 +7,9 @@
 //
 
 #import "LabelCell.h"
+#import <PureLayout.h>
 #import <BlocksKit+UIKit.h>
+#import "UIView+Extension.h"
 @interface LabelCell ()
 @property (nonatomic, strong) UILabel* descLabel;
 @property (nonatomic, strong) UIButton* detailButton;
@@ -43,6 +45,8 @@ static const CGFloat kAnimationTime = 0.5;
     [self.barLayer addAnimation:animation forKey:@"circleAnimation"];
 }
 
+
+
 - (void)setTextString:(NSString*)textString
 {
     _textString = textString;
@@ -50,11 +54,34 @@ static const CGFloat kAnimationTime = 0.5;
     self.barLayer = [self newBarLayerWithLength:(textString.length + 4) * 10 borderWidth:30 fillColor:[UIColor clearColor] borderColor:[UIColor greenColor]];
     [self.contentView.layer addSublayer:self.barLayer];
     [self addAnimation];
+    self.widthConstraint.constant = (textString.length+4)*10;
+    [self setNeedsLayout];
 }
 
 - (void)setUpUI
 {
     self.descLabel.frame = CGRectMake(-5, 50, 90, 20);
+    [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10];
+    [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];
+
+    [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
+    self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:20];
+}
+
+- (UIButton*)detailButton{
+    if(!_detailButton){
+        _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_detailButton setBackgroundColor:[UIColor blueColor]];
+        [_detailButton bk_addEventHandler:^(UIButton * sender) {
+            CGRect rect =  [self convertRect:sender.frame toView:self.superview];
+            if([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:)]){
+                [self.delegate userClickedOnVBarIndexItem:self.indexPath.section];
+            }
+            DDLogDebug(@"%@",NSStringFromCGRect(rect));
+        } forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_detailButton];
+    }
+    return _detailButton;
 }
 
 - (CAShapeLayer*)newBarLayerWithLength:(CGFloat)length borderWidth:(CGFloat)borderWidth fillColor:(UIColor*)fillColor borderColor:(UIColor*)borderColor

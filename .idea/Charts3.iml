@@ -9,10 +9,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Charts/AppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/Views/ChartsTitleView.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/Views/VBarCell.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Charts/Views/LabelCell.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Charts/Views/ChartsSectionLabel.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Charts/Views/VBarBackGroundView.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/Views/ChartsTitleView.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Charts/Views/LabelCell.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Charts/Views/VBarBackGroundView.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Charts/Views/ChartsSectionLabel.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/Views/ChartSectionDetailLabel.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/Views/VBarBackGroundView.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/Views/VBarCell.m" isTestSource="false" />
@@ -31,29 +31,29 @@
       <sourceFolder url="file://$MODULE_DIR$/Charts/PrefixHeader.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/AppDelegate.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Charts/Base.lproj/LaunchScreen.storyboard" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ChartsTests/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ChartsTests/ChartsTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChartsTests/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIWebView+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIView+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIGestureRecognizer+BlocksKit.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UITextField+BlocksKit.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIView+BlocksKit.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIAlertView+BlocksKit.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIPopoverController+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIGestureRecognizer+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIBarButtonItem+BlocksKit.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UITextField+BlocksKit.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIAlertView+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIPopoverController+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIBarButtonItem+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIControl+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIWebView+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIControl+BlocksKit.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIPopoverController+BlocksKit.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIAlertView+BlocksKit.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UITextField+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIActionSheet+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIImagePickerController+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIActionSheet+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIImagePickerController+BlocksKit.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIAlertView+BlocksKit.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UITextField+BlocksKit.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/UIKit/UIView+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/DynamicDelegate/NSObject+A2DynamicDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/DynamicDelegate/A2DynamicDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/DynamicDelegate/A2BlockInvocation.h" isTestSource="false" />
@@ -69,14 +69,14 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/BlocksKit+UIKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/BlocksKit+MessageUI.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableArray+BlocksKit.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSTimer+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSObject+BKBlockObservation.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSArray+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/BKMacros.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableIndexSet+BlocksKit.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableDictionary+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableIndexSet+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSOrderedSet+BlocksKit.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSTimer+BlocksKit.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableDictionary+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableOrderedSet+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableDictionary+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSMutableArray+BlocksKit.m" isTestSource="false" />
@@ -99,10 +99,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSSet+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSArray+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/Core/NSObject+BKBlockObservation.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/MessageUI/MFMessageComposeViewController+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/MessageUI/MFMessageComposeViewController+BlocksKit.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/MessageUI/MFMailComposeViewController+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/MessageUI/MFMailComposeViewController+BlocksKit.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/BlocksKit/BlocksKit/MessageUI/MFMessageComposeViewController+BlocksKit.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack-dummy.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack.xcconfig" isTestSource="false" />
@@ -113,24 +113,22 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/PureLayout/PureLayout.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/PureLayout/PureLayout-prefix.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.markdown" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.debug.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-resources.sh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-frameworks.sh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.release.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-dummy.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-frameworks.sh" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-resources.sh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.debug.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDASLLogCapture.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDAssertMacros.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLegacyMacros.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDFileLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDAbstractDatabaseLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDASLLogCapture.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/CocoaLumberjack.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLog.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDFileLogger.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDTTYLogger.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLog.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLogMacros.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDFileLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDTTYLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDASLLogger.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/Extensions/DDMultiFormatter.m" isTestSource="false" />
@@ -141,15 +139,17 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/Extensions/DDDispatchQueueLogFormatter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDASLLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLog+LOGV.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/CocoaLumberjack.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDAbstractDatabaseLogger.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLogMacros.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/PureLayout.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/PureLayout+Internal.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/NSLayoutConstraint+PureLayout.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/ALView+PureLayout.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/NSArray+PureLayout.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/NSLayoutConstraint+PureLayout.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/PureLayout+Internal.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/NSLayoutConstraint+PureLayout.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/ALView+PureLayout.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/PureLayoutDefines.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/ALView+PureLayout.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/PureLayout/PureLayout/PureLayout/NSArray+PureLayout.m" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
