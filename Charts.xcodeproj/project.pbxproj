@@ -23,6 +23,7 @@
 		57E31F911CDB429A0084FA78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57E31F8F1CDB429A0084FA78 /* LaunchScreen.storyboard */; };
 		57E31F9C1CDB429A0084FA78 /* ChartsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E31F9B1CDB429A0084FA78 /* ChartsTests.m */; };
 		57E31FA71CDB429A0084FA78 /* ChartsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E31FA61CDB429A0084FA78 /* ChartsUITests.m */; };
+		57FCEA161CE73DBD007E1BF9 /* BeginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCEA151CE73DBD007E1BF9 /* BeginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		57E31FA21CDB429A0084FA78 /* ChartsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChartsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E31FA61CDB429A0084FA78 /* ChartsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartsUITests.m; sourceTree = "<group>"; };
 		57E31FA81CDB429A0084FA78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57FCEA141CE73DBD007E1BF9 /* BeginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeginViewController.h; sourceTree = "<group>"; };
+		57FCEA151CE73DBD007E1BF9 /* BeginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginViewController.m; sourceTree = "<group>"; };
 		DA62E70ED21D25AB38FCA890 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F18CE7F3EEE6369A0F790A14 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +135,8 @@
 				579F4A361CDB43EA00D50A3A /* HomeViewController.h */,
 				579F4A371CDB43EA00D50A3A /* HomeViewController.m */,
 				574E0FF61CE4510700372EE3 /* ChartViewDelegate.h */,
+				57FCEA141CE73DBD007E1BF9 /* BeginViewController.h */,
+				57FCEA151CE73DBD007E1BF9 /* BeginViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				576EFC111CE56CDC00A7DB8C /* ChartSectionDetailLabel.m in Sources */,
 				5733076A1CE2DE8300DF322A /* LabelCell.m in Sources */,
 				579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */,
+				57FCEA161CE73DBD007E1BF9 /* BeginViewController.m in Sources */,
 				57C1F23D1CE477B50030A67D /* ChartsSectionLabel.m in Sources */,
 				57E31F8C1CDB429A0084FA78 /* AppDelegate.m in Sources */,
 				575750A61CE3294700A81AD1 /* VBarCell.m in Sources */,

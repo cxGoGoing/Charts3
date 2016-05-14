@@ -109,6 +109,7 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
 - (void)setUpUI
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.titleView];
     [self.view addSubview:self.backGroundView];
     [self.view addSubview:self.collectionView];
@@ -137,6 +138,9 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
     cell.indexPath = indexPath;
     cell.delegate = self;
     return cell;
+}
+- (void)dealloc{
+    DDLogWarn(@"被销毁");
 }
 
 - (void)didReceiveMemoryWarning

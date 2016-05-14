@@ -54,8 +54,6 @@ static const CGFloat kAnimationTime = 0.5;
     self.descLabel.text = textString;
     self.widthConstraint.constant = (textString.length+4)*10;
     self.barLayer.path = [self barLayerPathWith:(textString.length+4)*10].CGPath;
-    [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
-
 }
 
 - (void)setUpUI
@@ -67,12 +65,14 @@ static const CGFloat kAnimationTime = 0.5;
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:0];
     [self.contentView.layer addSublayer:self.barLayer];
+    [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
+
 }
 
 - (UIButton*)detailButton{
     if(!_detailButton){
         _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_detailButton setBackgroundColor:[UIColor blueColor]];
+        [_detailButton setBackgroundColor:[UIColor clearColor]];
         [_detailButton bk_addEventHandler:^(UIButton * sender) {
             CGRect rect =  [self convertRect:sender.frame toView:self.superview];
             if([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:)]){
@@ -88,7 +88,7 @@ static const CGFloat kAnimationTime = 0.5;
 - (CAShapeLayer*)barLayer{
     if(!_barLayer){
         _barLayer = [CAShapeLayer layer];
-        _barLayer.strokeColor = [UIColor redColor].CGColor;
+        _barLayer.strokeColor = [UIColor blueColor].CGColor;
         _barLayer.fillColor = [UIColor clearColor].CGColor;
         _barLayer.lineWidth = 30;
     }

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HomeViewController.h"
 #import "LogUtil.h"
+#import "BeginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -19,9 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [LogUtil setUp];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    HomeViewController * homeVc = [[HomeViewController alloc]init];
-    UINavigationController * naviVc = [[UINavigationController alloc]initWithRootViewController:homeVc];
+    BeginViewController * beginVc = [[BeginViewController alloc]init];
+    UINavigationController * naviVc = [[UINavigationController alloc]initWithRootViewController:beginVc];
     self.window.rootViewController = naviVc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
