@@ -26,7 +26,7 @@
 static const CGFloat kBottomHeight = 60;/**<  筛选按钮高度  */
 static const CGFloat kMarginY = 30;/**<  collectionView的高度和底部backView的Y方向高度差  */
 static const CGFloat kMarginBottom = 30;/**<  colleciontView和底部bottom的距离  */
-static const CGFloat kHubHeight = 60;
+static const CGFloat kHubHeight = 55;
 @implementation HomeViewController
 
 - (void)viewDidLoad

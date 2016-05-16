@@ -9,13 +9,16 @@
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
 #import "VBarModel.h"
+#import "HubDetail.h"
 @interface ChartsHub()
 @property (nonatomic,strong)UIButton * leftBtn;/**<  选择按钮  */
 @property (nonatomic,strong)UIButton * rightBtn;
-@property (nonatomic,strong)UILabel * detailLabel;/**<  详情label  */
+@property (nonatomic,strong)HubDetail * hubDetail;/**<  详情label  */
 @end
 static ChartsHub * _chartsHub = nil;
 static const CGFloat kAmimationTime = 0.5;
+static const CGFloat kHubWidth = 220;
+static const CGFloat kHubHeight = 55;
 
 @implementation ChartsHub
 + (ChartsHub*)shareInstance{
@@ -40,6 +43,13 @@ static const CGFloat kAmimationTime = 0.5;
     return _leftBtn;
 }
 
+- (HubDetail*)hubDetail{
+    if(!_hubDetail){
+
+    }
+    return _hubDetail;
+}
+
 - (UIButton*)rightBtn{
     if(!_rightBtn){
 
@@ -47,17 +57,12 @@ static const CGFloat kAmimationTime = 0.5;
     return _rightBtn;
 }
 
-- (UILabel*)detailLabel{
-    if(!_detailLabel){
 
-    }
-    return _detailLabel;
-}
 
 - (void)setUpUI{
-    self.bounds = CGRectMake(0, 0, 220, 60);
+    self.bounds = CGRectMake(0, 0, kHubWidth, kHubHeight);
     self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
 }
 
 - (void)setModel:(VBarModel *)model{

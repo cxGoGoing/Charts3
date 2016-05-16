@@ -19,6 +19,7 @@
 		57C1F23D1CE477B50030A67D /* ChartsSectionLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1F23C1CE477B50030A67D /* ChartsSectionLabel.m */; };
 		57DBC6251CE96C330013ED3D /* VBarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DBC6241CE96C330013ED3D /* VBarModel.m */; };
 		57DBC6281CE96FA60013ED3D /* ChartsHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DBC6271CE96FA60013ED3D /* ChartsHub.m */; };
+		57DBC62C1CE9A4440013ED3D /* HubDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DBC62B1CE9A4440013ED3D /* HubDetail.m */; };
 		57E31F891CDB429A0084FA78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E31F881CDB429A0084FA78 /* main.m */; };
 		57E31F8C1CDB429A0084FA78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E31F8B1CDB429A0084FA78 /* AppDelegate.m */; };
 		57E31F8E1CDB429A0084FA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E31F8D1CDB429A0084FA78 /* Assets.xcassets */; };
@@ -71,6 +72,8 @@
 		57DBC6241CE96C330013ED3D /* VBarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarModel.m; sourceTree = "<group>"; };
 		57DBC6261CE96FA60013ED3D /* ChartsHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsHub.h; sourceTree = "<group>"; };
 		57DBC6271CE96FA60013ED3D /* ChartsHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsHub.m; sourceTree = "<group>"; };
+		57DBC62A1CE9A4440013ED3D /* HubDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HubDetail.h; sourceTree = "<group>"; };
+		57DBC62B1CE9A4440013ED3D /* HubDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HubDetail.m; sourceTree = "<group>"; };
 		57E31F841CDB429A0084FA78 /* Charts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Charts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E31F881CDB429A0084FA78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57E31F8A1CDB429A0084FA78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				57C1F23C1CE477B50030A67D /* ChartsSectionLabel.m */,
 				576EFC0F1CE56CDC00A7DB8C /* ChartSectionDetailLabel.h */,
 				576EFC101CE56CDC00A7DB8C /* ChartSectionDetailLabel.m */,
+				57DBC62A1CE9A4440013ED3D /* HubDetail.h */,
+				57DBC62B1CE9A4440013ED3D /* HubDetail.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				57E31F891CDB429A0084FA78 /* main.m in Sources */,
 				57C1F23A1CE471880030A67D /* ChartsTitleView.m in Sources */,
 				579F4A381CDB43EA00D50A3A /* HomeViewController.m in Sources */,
+				57DBC62C1CE9A4440013ED3D /* HubDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
