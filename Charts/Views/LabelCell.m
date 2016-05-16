@@ -74,16 +74,19 @@ static const CGFloat kAnimationTime = 0.5;
     if(!_detailButton){
         _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_detailButton setBackgroundColor:[UIColor clearColor]];
-        [_detailButton bk_addEventHandler:^(UIButton * sender) {
-            CGRect rect =  [self convertRect:sender.frame toView:self.superview];
-            if([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:)]){
-                [self.delegate userClickedOnVBarIndexItem:self.indexPath.section];
-            }
-            DDLogDebug(@"%@",NSStringFromCGRect(rect));
-        } forControlEvents:UIControlEventTouchUpInside];
+        [_detailButton addTarget:self action:@selector(didClickDetailButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_detailButton];
     }
     return _detailButton;
+}
+
+- (void)didClickDetailButton:(UIButton*)sender{
+    CGRect rect =  [self convertRect:sender.frame toView:self.superview.superview];
+    if([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:)]){
+        [self.delegate userClickedOnVBarIndexItem:self.indexPath.section];
+    }
+    DDLogDebug(@"%@",NSStringFromCGRect(rect));
+
 }
 
 - (CAShapeLayer*)barLayer{
