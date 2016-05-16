@@ -28,16 +28,36 @@ static const CGFloat kAmimationTime = 0.5;
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        self.bounds = CGRectMake(0, 0, 220, 60);
-        self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
-        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-        self.layer.cornerRadius = 10;
+        [self setUpUI];
     }
     return self;
 }
 
-- (void)setUpUI{
+- (UIButton*)leftBtn{
+    if(!_leftBtn){
 
+    }
+    return _leftBtn;
+}
+
+- (UIButton*)rightBtn{
+    if(!_rightBtn){
+
+    }
+    return _rightBtn;
+}
+
+- (UILabel*)detailLabel{
+    if(!_detailLabel){
+
+    }
+    return _detailLabel;
+}
+
+- (void)setUpUI{
+    self.bounds = CGRectMake(0, 0, 220, 60);
+    self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
+    self.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setModel:(VBarModel *)model{
