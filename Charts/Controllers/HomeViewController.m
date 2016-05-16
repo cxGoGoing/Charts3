@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "LabelCell.h"
 #import "VBarBackGroundView.h"
-#import "VBarCell.h"
 #import "ChartsTitleView.h"
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
