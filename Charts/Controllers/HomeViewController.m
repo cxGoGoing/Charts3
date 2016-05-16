@@ -205,8 +205,6 @@ static inline CGFloat calBackViewHeight()
     self.currentIndex = vBarIndex;
     [self.view addSubview:[ChartsHub shareInstance]];
     [self.collectionView reloadData];
-
-
 }
 
 - (void)userClickedRight
