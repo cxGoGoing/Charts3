@@ -11,8 +11,8 @@
 @protocol ChartsHubDelegate<NSObject>
 @optional
 - (void)userClickedCenter;
-- (void)userClickedLeft;
-- (void)userClickedRight;
+- (void)userClickedLeftToIndex:(NSInteger)index;
+- (void)userClickedRightToIndex:(NSInteger)index;
 @end
 @interface ChartsHub : UIView
 + (ChartsHub*)shareInstance;
@@ -23,4 +23,5 @@
 @property (nonatomic,strong)VBarModel * model;
 @property (nonatomic,weak)id<ChartsHubDelegate> delegate;
 @property (nonatomic,assign)NSInteger currentIndex;
+@property (nonatomic,assign)NSInteger maxIndex;
 @end

@@ -13,7 +13,7 @@
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
 #import "VBarModel.h"
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate>
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate,ChartsHubDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
@@ -152,7 +152,15 @@ static inline CGFloat calBackViewHeight(){
     [ChartsHub shareInstance].model = model;
     [ChartsHub shareInstance].currentIndex = vBarIndex;
     [[ChartsHub shareInstance]showAtAxisY:positionY];
+    [ChartsHub shareInstance].delegate = self;
+    DDLogInfo(@"点击弹出的vBarIndex:%zi",vBarIndex);
     [self.view addSubview:[ChartsHub shareInstance]];
+}
+
+- (void)userClickedLeftToIndex:(NSInteger)index{
+    DDLogInfo(@"点击左边按钮时候的index:%zi",index);
+    NSInteger currentIndex = index--;
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:currentIndex] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 }
 
 

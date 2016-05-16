@@ -41,6 +41,7 @@ static const CGFloat kHubHeight = 55;
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_leftBtn setBackgroundImage:[UIImage imageNamed:@"l-arrow－b"] forState:UIControlStateNormal];
         _leftBtn.frame = CGRectMake(0, 0, 30, 55);
+        [_leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
 }
@@ -51,6 +52,12 @@ static const CGFloat kHubHeight = 55;
         _rightBtn.frame = CGRectMake(31+316/2, 0, 30, 55);
     }
     return _rightBtn;
+}
+
+- (void)leftBtnClick{
+    if([self.delegate respondsToSelector:@selector(userClickedLeftToIndex:)]){
+        [self.delegate userClickedLeftToIndex:self.currentIndex];
+    }
 }
 
 - (HubDetail*)hubDetail{
