@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "VBarModel.h"
 @interface HubDetail : UIView
 @property (nonatomic,copy) NSString * headString;
 @property (nonatomic,copy) NSString * bottomString;
+@property (nonatomic,strong)VBarModel * model;
 + (instancetype)hubDetail;
 @end

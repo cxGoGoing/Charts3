@@ -92,8 +92,45 @@ static inline CGFloat calBackViewHeight()
 {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSArray* array = @[ @"北首开知语城", @"小米科技棒棒哒", @"中关村科技", @"2015-05", @"2015-06", @"2015-07", @"2015-08", @"2015-09", @"2015-11", @"2015-12-31", @"2016-12-01-1", @"北首开知语城", @"小米科技棒棒哒", @"中关村科技", @"2015-05", @"2015-06", @"2015-07", @"2015-08", @"2015-09", @"2015-11", @"2015-12-31", @"2016-12-01-1" ];
-        [_dataArray addObjectsFromArray:array];
+        NSArray* array = @[ @{ @"titleString" : @"北首开知语城",
+            @"detailNumber" : @"1" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"2" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"5" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"6" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"9" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"2.5" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"3.6" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"4.7" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"6.2" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"1.1" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"6.1" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"3.2" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"1" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"4" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"7" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"2" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"1.5" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"2" },
+            @{ @"titleString" : @"北首开知语城",
+                @"detailNumber" : @"8.8" } ];
+        _dataArray = [VBarModel objectArrayWithKeyValuesArray:array];
     }
     return _dataArray;
 }
@@ -202,7 +239,8 @@ static inline CGFloat calBackViewHeight()
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
 {
     LabelCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([LabelCell class]) forIndexPath:indexPath];
-    cell.textString = self.dataArray[indexPath.section];
+    //cell.textString = self.dataArray[indexPath.section];
+    cell.model = self.dataArray[indexPath.section];
     cell.indexPath = indexPath;
     cell.delegate = self;
     return cell;

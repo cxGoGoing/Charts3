@@ -28,16 +28,11 @@
     return detail;
 }
 
-- (void)setHeadString:(NSString*)headString
-{
-    _headString = headString;
-    self.headLabel.text = headString;
-}
 
-- (void)setBottomString:(NSString*)bottomString
-{
-    _bottomString = bottomString;
-    self.bottomLabel.text = bottomString;
+- (void)setModel:(VBarModel *)model{
+    _model = model;
+    self.headLabel.text = model.titleString;
+    self.bottomLabel.text = [NSString stringWithFormat:@"%f",model.detailNumber];
 }
 
 - (UILabel*)headLabel

@@ -92,8 +92,7 @@ static const CGFloat kHubHeight = 55;
 - (void)setModel:(VBarModel*)model
 {
     _model = model;
-    self.hubDetail.headString = model.titleString;
-    self.hubDetail.bottomString = [NSString stringWithFormat:@"%f", model.detailNumber];
+    self.hubDetail.model = model;
 }
 
 - (void)dismissInView
