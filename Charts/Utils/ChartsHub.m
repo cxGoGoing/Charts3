@@ -23,9 +23,10 @@ static ChartsHub * _chartsHub = nil;
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        self.bounds = CGRectMake(0, 0, 220, 50);
+        self.bounds = CGRectMake(0, 0, 220, 60);
         self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        self.layer.cornerRadius = 10;
     }
     return self;
 }

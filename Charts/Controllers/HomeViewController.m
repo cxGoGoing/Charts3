@@ -133,7 +133,7 @@ static inline CGFloat calBackViewHeight(){
 }
 
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect{
-    [[ChartsHub shareInstance]showAtAxisY:rect.origin.y];
+    [[ChartsHub shareInstance]showAtAxisY:CGRectGetMidY(rect)];
     [self.view addSubview:[ChartsHub shareInstance]];
 }
 
