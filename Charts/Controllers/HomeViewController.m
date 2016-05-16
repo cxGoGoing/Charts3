@@ -13,18 +13,19 @@
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
 #import "VBarModel.h"
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate,ChartsHubDelegate>
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate, ChartsHubDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) ChartsTitleView* titleView; /**<  滚动视图  */
 @property (nonatomic, strong) UIButton* siftBtn;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
-static const CGFloat kBottomHeight = 60;/**<  筛选按钮高度  */
-static const CGFloat kMarginY = 30;/**<  collectionView的高度和底部backView的Y方向高度差  */
-static const CGFloat kMarginBottom = 30;/**<  colleciontView和底部bottom的距离  */
+static const CGFloat kBottomHeight = 60; /**<  筛选按钮高度  */
+static const CGFloat kMarginY = 30; /**<  collectionView的高度和底部backView的Y方向高度差  */
+static const CGFloat kMarginBottom = 30; /**<  colleciontView和底部bottom的距离  */
 static const CGFloat kHubHeight = 55;
 static const CGFloat kItemSize = 40;
 @implementation HomeViewController
@@ -54,8 +55,9 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
     CGSize size = [text sizeWithAttributes:dictionary];
     return size;
 }
-static inline CGFloat calBackViewHeight(){
-    CGFloat height = [UIScreen mainScreen].bounds.size.height -20-154/2-30-kBottomHeight-10-kMarginBottom-30;
+static inline CGFloat calBackViewHeight()
+{
+    CGFloat height = [UIScreen mainScreen].bounds.size.height - 20 - 154 / 2 - 30 - kBottomHeight - 10 - kMarginBottom - 30;
     return height;
 }
 
@@ -99,7 +101,7 @@ static inline CGFloat calBackViewHeight(){
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight()-kMarginY) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight() - kMarginY) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -108,7 +110,7 @@ static inline CGFloat calBackViewHeight(){
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 22, 0);
-        UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideHub)];
+        UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideHub)];
         [_collectionView addGestureRecognizer:tapGesture];
         layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - kItemSize, kItemSize);
         [self.view addSubview:_collectionView];
@@ -117,8 +119,9 @@ static inline CGFloat calBackViewHeight(){
 }
 
 /**  隐藏hub  */
-- (void)hideHub{
-    [[ChartsHub shareInstance]dismissInView];
+- (void)hideHub
+{
+    [[ChartsHub shareInstance] dismissInView];
 }
 
 - (void)siftData:(UIButton*)btn
@@ -140,36 +143,49 @@ static inline CGFloat calBackViewHeight(){
     [self.view addSubview:self.siftBtn];
 }
 #pragma mark ChartsDelegate方法
-- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect{
+- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect
+{
     CGFloat startY = CGRectGetMinY(rect);
-    CGFloat positionY = startY - kHubHeight-5;
-    if(startY-kHubHeight-5<CGRectGetMinY(self.collectionView.frame)){/**  当前视图放不下的情况下从上往下放  */
-        positionY = startY + kItemSize-5;
+    CGFloat positionY = startY - kHubHeight - 5;
+    if (startY - kHubHeight - 5 < CGRectGetMinY(self.collectionView.frame)) { /**  当前视图放不下的情况下从上往下放  */
+        positionY = startY + kItemSize - 5;
     }
-    VBarModel * model = [[VBarModel alloc]init];
+    VBarModel* model = [[VBarModel alloc] init];
     model.titleString = @"2015-10";
     model.detailNumber = 54000;
     [ChartsHub shareInstance].model = model;
-    [[ChartsHub shareInstance]showAtAxisY:positionY];
+    [[ChartsHub shareInstance] showAtAxisY:positionY];
     [ChartsHub shareInstance].delegate = self;
-    DDLogInfo(@"点击弹出的vBarIndex:%zi",vBarIndex);
+    self.currentIndex = vBarIndex;
+    DDLogInfo(@"点击弹出的vBarIndex:%zi", vBarIndex);
     [self.view addSubview:[ChartsHub shareInstance]];
 }
 
-- (void)userClickedRight{
-
+- (void)userClickedRight
+{
+    NSInteger index = self.currentIndex + 1;
+    if (self.currentIndex == self.dataArray.count - 1) {
+        index = 0;
+    }
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    DDLogWarn(@"------%zi", index);
+    self.currentIndex = index;
 }
 
-- (void)userClickedLeft{
-
+- (void)userClickedLeft
+{
+    NSInteger index = self.currentIndex - 1;
+    if (self.currentIndex == 0) {
+        index = self.dataArray.count - 1;
+    }
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    DDLogWarn(@"------%zi", index);
+    self.currentIndex = index;
 }
 
-- (void)userClickedCenter{
-
+- (void)userClickedCenter
+{
 }
-
-
-
 
 #pragma mark CollectionView Delegate and DataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView
