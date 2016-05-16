@@ -64,9 +64,11 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
         _siftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_siftBtn setImage:[UIImage imageNamed:@"筛选icon"] forState:UIControlStateNormal];
         [_siftBtn setTitle:@"筛选" forState:UIControlStateNormal];
+        _siftBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_siftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _siftBtn.titleEdgeInsets = UIEdgeInsetsMake(50, -50, 0, 0);
         [_siftBtn addTarget:self action:@selector(siftData:) forControlEvents:UIControlEventTouchUpInside];
-        _siftBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 80, [UIScreen mainScreen].bounds.size.height - 80, 32, 60);
+        _siftBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 100, [UIScreen mainScreen].bounds.size.height - 100, 100, 60);
     }
     return _siftBtn;
 }
