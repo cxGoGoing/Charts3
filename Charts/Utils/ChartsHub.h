@@ -11,8 +11,8 @@
 @protocol ChartsHubDelegate<NSObject>
 @optional
 - (void)userClickedCenter;
-- (void)userClickedLeftToIndex:(NSInteger)index;
-- (void)userClickedRightToIndex:(NSInteger)index;
+- (void)userClickedLeft;
+- (void)userClickedRight;
 @end
 @interface ChartsHub : UIView
 + (ChartsHub*)shareInstance;

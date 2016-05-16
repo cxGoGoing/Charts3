@@ -10,18 +10,19 @@
 #import "UIView+Extension.h"
 #import "VBarModel.h"
 #import "HubDetail.h"
-@interface ChartsHub()
-@property (nonatomic,strong)UIButton * leftBtn;/**<  选择按钮  */
-@property (nonatomic,strong)UIButton * rightBtn;
-@property (nonatomic,strong)HubDetail * hubDetail;/**<  详情label  */
+@interface ChartsHub ()
+@property (nonatomic, strong) UIButton* leftBtn; /**<  选择按钮  */
+@property (nonatomic, strong) UIButton* rightBtn;
+@property (nonatomic, strong) HubDetail* hubDetail; /**<  详情label  */
 @end
-static ChartsHub * _chartsHub = nil;
+static ChartsHub* _chartsHub = nil;
 static const CGFloat kAmimationTime = 0.5;
 static const CGFloat kHubWidth = 220;
 static const CGFloat kHubHeight = 55;
 
 @implementation ChartsHub
-+ (ChartsHub*)shareInstance{
++ (ChartsHub*)shareInstance
+{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _chartsHub = [[self alloc]init];
@@ -29,15 +30,17 @@ static const CGFloat kHubHeight = 55;
     return _chartsHub;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
         [self setUpUI];
     }
     return self;
 }
 
-- (UIButton*)leftBtn{
-    if(!_leftBtn){
+- (UIButton*)leftBtn
+{
+    if (!_leftBtn) {
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_leftBtn setBackgroundImage:[UIImage imageNamed:@"l-arrow－b"] forState:UIControlStateNormal];
         _leftBtn.frame = CGRectMake(0, 0, 30, 55);
@@ -45,60 +48,73 @@ static const CGFloat kHubHeight = 55;
     }
     return _leftBtn;
 }
-- (UIButton*)rightBtn{
-    if(!_rightBtn){
+- (UIButton*)rightBtn
+{
+    if (!_rightBtn) {
         _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_rightBtn setBackgroundImage:[UIImage imageNamed:@"r-arrow-b"] forState:UIControlStateNormal];
-        _rightBtn.frame = CGRectMake(31+316/2, 0, 30, 55);
+        _rightBtn.frame = CGRectMake(31 + 316 / 2, 0, 30, 55);
+        [_rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
 }
 
-- (void)leftBtnClick{
-    if([self.delegate respondsToSelector:@selector(userClickedLeftToIndex:)]){
-        [self.delegate userClickedLeftToIndex:self.currentIndex];
+- (void)leftBtnClick
+{
+    if ([self.delegate respondsToSelector:@selector(userClickedLeft)]) {
+        [self.delegate userClickedLeft];
     }
 }
 
-- (HubDetail*)hubDetail{
-    if(!_hubDetail){
+- (void)rightBtnClick
+{
+    if ([self.delegate respondsToSelector:@selector(userClickedRight)]) {
+        [self.delegate userClickedRight];
+    }
+}
+
+- (HubDetail*)hubDetail
+{
+    if (!_hubDetail) {
         _hubDetail = [HubDetail hubDetail];
     }
     return _hubDetail;
 }
 
-
-
-- (void)setUpUI{
-    self.frame = CGRectMake(15+60,[UIScreen mainScreen].bounds.size.height/2, kHubWidth, kHubHeight);
+- (void)setUpUI
+{
+    self.frame = CGRectMake(15 + 60, [UIScreen mainScreen].bounds.size.height / 2, kHubWidth, kHubHeight);
     [self addSubview:self.hubDetail];
     [self addSubview:self.leftBtn];
     [self addSubview:self.rightBtn];
 }
 
-- (void)setModel:(VBarModel *)model{
+- (void)setModel:(VBarModel*)model
+{
     _model = model;
     self.hubDetail.headString = model.titleString;
-    self.hubDetail.bottomString = [NSString stringWithFormat:@"%f",model.detailNumber];
+    self.hubDetail.bottomString = [NSString stringWithFormat:@"%f", model.detailNumber];
 }
 
-- (void)dismissInView{
-    if(!self.superview)return;
+- (void)dismissInView
+{
+    if (!self.superview)
+        return;
     NSAssert(self.superview != nil, @"父视图不存在");
     [self removeFromSuperview];
 }
 
 #pragma mark 改变视图位置的方法
-- (void)showAtAxisY:(CGFloat)axisY{
+- (void)showAtAxisY:(CGFloat)axisY
+{
     [UIView animateWithDuration:kAmimationTime animations:^{
         self.y = axisY;
         [self layoutIfNeeded];
     }];
-
 }
 
-- (void)showAtAxisX:(CGFloat)axisX{
-
+- (void)showAtAxisX:(CGFloat)axisX
+{
 }
 
 - (void)showAtPoint:(CGPoint)point{

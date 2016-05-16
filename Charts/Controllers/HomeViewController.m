@@ -150,18 +150,25 @@ static inline CGFloat calBackViewHeight(){
     model.titleString = @"2015-10";
     model.detailNumber = 54000;
     [ChartsHub shareInstance].model = model;
-    [ChartsHub shareInstance].currentIndex = vBarIndex;
     [[ChartsHub shareInstance]showAtAxisY:positionY];
     [ChartsHub shareInstance].delegate = self;
     DDLogInfo(@"点击弹出的vBarIndex:%zi",vBarIndex);
     [self.view addSubview:[ChartsHub shareInstance]];
 }
 
-- (void)userClickedLeftToIndex:(NSInteger)index{
-    DDLogInfo(@"点击左边按钮时候的index:%zi",index);
-    NSInteger currentIndex = index--;
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:currentIndex] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+- (void)userClickedRight{
+
 }
+
+- (void)userClickedLeft{
+
+}
+
+- (void)userClickedCenter{
+
+}
+
+
 
 
 #pragma mark CollectionView Delegate and DataSource
