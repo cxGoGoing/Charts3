@@ -11,6 +11,8 @@
 #import "VBarBackGroundView.h"
 #import "VBarCell.h"
 #import "ChartsTitleView.h"
+#import "ChartsHub.h"
+#import "UIView+Extension.h"
 @interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
@@ -131,7 +133,12 @@ static inline CGFloat calBackViewHeight(){
 }
 
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect{
-    
+    [[ChartsHub shareInstance]showAtAxisY:rect.origin.y];
+    [self.view addSubview:[ChartsHub shareInstance]];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [[ChartsHub shareInstance]dismissInView];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView

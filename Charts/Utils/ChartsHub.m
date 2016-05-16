@@ -23,7 +23,9 @@ static ChartsHub * _chartsHub = nil;
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-
+        self.bounds = CGRectMake(0, 0, 220, 50);
+        self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, 300);
+        self.backgroundColor = [UIColor redColor];
     }
     return self;
 }
@@ -34,7 +36,7 @@ static ChartsHub * _chartsHub = nil;
 }
 
 - (void)showAtAxisY:(CGFloat)axisY{
-    
+    self.centerY = axisY;
 }
 
 @end
