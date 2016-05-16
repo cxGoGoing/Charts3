@@ -51,7 +51,7 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
 - (VBarBackGroundView*)backGroundView
 {
     if (!_backGroundView) {
-        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(85, 131 + 64, [UIScreen mainScreen].bounds.size.width - 15 - 85, 380)];
+        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(80, 131 + 64, [UIScreen mainScreen].bounds.size.width - 15 - 85, 380)];
         _backGroundView.backgroundColor = [UIColor clearColor];
         _backGroundView.userInteractionEnabled = NO;
     }
@@ -82,7 +82,7 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, 350) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, 350) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -90,7 +90,7 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
-        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 25, 0);
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 22, 0);
         layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, 40);
         [self.view addSubview:_collectionView];
     }

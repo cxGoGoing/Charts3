@@ -58,6 +58,7 @@ static const CGFloat kAnimationTime = 0.5;
 
 - (void)setUpUI
 {
+    self.contentView.backgroundColor = [UIColor colorWithRed:0.926 green:1.000 blue:0.026 alpha:0.3];
     self.descLabel.frame = CGRectMake(-5, 50, 90, 20);
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10];
     [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];
