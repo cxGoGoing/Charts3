@@ -47,6 +47,7 @@
 
 - (void)setUpUI{
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    self.frame = CGRectMake(30.5, 0, 158, 55);
 
 }
 

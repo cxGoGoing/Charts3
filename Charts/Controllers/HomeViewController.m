@@ -27,6 +27,7 @@ static const CGFloat kBottomHeight = 60;/**<  筛选按钮高度  */
 static const CGFloat kMarginY = 30;/**<  collectionView的高度和底部backView的Y方向高度差  */
 static const CGFloat kMarginBottom = 30;/**<  colleciontView和底部bottom的距离  */
 static const CGFloat kHubHeight = 55;
+static const CGFloat kItemSize = 40;
 @implementation HomeViewController
 
 - (void)viewDidLoad
@@ -110,7 +111,7 @@ static inline CGFloat calBackViewHeight(){
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 22, 0);
         UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideHub)];
         [_collectionView addGestureRecognizer:tapGesture];
-        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, 40);
+        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - kItemSize, kItemSize);
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
@@ -142,9 +143,9 @@ static inline CGFloat calBackViewHeight(){
 #pragma mark ChartsDelegate方法
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect{
     CGFloat startY = CGRectGetMinY(rect);
-    CGFloat positionY = startY-kHubHeight/2-5;
-    if(startY-kHubHeight<CGRectGetMinY(self.collectionView.frame)){/**  当前视图放不下的情况下从上往下放  */
-        positionY = startY +kHubHeight+5;
+    CGFloat positionY = startY - kHubHeight-5;
+    if(startY-kHubHeight-5<CGRectGetMinY(self.collectionView.frame)){/**  当前视图放不下的情况下从上往下放  */
+        positionY = startY + kItemSize-5;
     }
     VBarModel * model = [[VBarModel alloc]init];
     model.titleString = @"2015-10";

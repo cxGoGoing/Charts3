@@ -60,8 +60,8 @@ static const CGFloat kHubHeight = 55;
 
 
 - (void)setUpUI{
-    self.bounds = CGRectMake(0, 0, kHubWidth, kHubHeight);
-    self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
+    self.frame = CGRectMake(15+60,[UIScreen mainScreen].bounds.size.height/2, kHubWidth, kHubHeight);
+
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
 }
 
@@ -78,7 +78,7 @@ static const CGFloat kHubHeight = 55;
 #pragma mark 改变视图位置的方法
 - (void)showAtAxisY:(CGFloat)axisY{
     [UIView animateWithDuration:kAmimationTime animations:^{
-        self.centerY = axisY;
+        self.y = axisY;
         [self layoutIfNeeded];
     }];
 
