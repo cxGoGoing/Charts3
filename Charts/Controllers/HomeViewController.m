@@ -150,6 +150,7 @@ static inline CGFloat calBackViewHeight(){
     model.titleString = @"2015-10";
     model.detailNumber = 54000;
     [ChartsHub shareInstance].model = model;
+    [ChartsHub shareInstance].currentIndex = vBarIndex;
     [[ChartsHub shareInstance]showAtAxisY:positionY];
     [self.view addSubview:[ChartsHub shareInstance]];
 }

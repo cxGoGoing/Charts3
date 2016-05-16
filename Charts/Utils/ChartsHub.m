@@ -38,9 +38,19 @@ static const CGFloat kHubHeight = 55;
 
 - (UIButton*)leftBtn{
     if(!_leftBtn){
-
+        _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_leftBtn setBackgroundImage:[UIImage imageNamed:@"l-arrow－b"] forState:UIControlStateNormal];
+        _leftBtn.frame = CGRectMake(0, 0, 30, 55);
     }
     return _leftBtn;
+}
+- (UIButton*)rightBtn{
+    if(!_rightBtn){
+        _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_rightBtn setBackgroundImage:[UIImage imageNamed:@"r-arrow-b"] forState:UIControlStateNormal];
+        _rightBtn.frame = CGRectMake(31+316/2, 0, 30, 55);
+    }
+    return _rightBtn;
 }
 
 - (HubDetail*)hubDetail{
@@ -50,20 +60,13 @@ static const CGFloat kHubHeight = 55;
     return _hubDetail;
 }
 
-- (UIButton*)rightBtn{
-    if(!_rightBtn){
-
-    }
-    return _rightBtn;
-}
-
 
 
 - (void)setUpUI{
     self.frame = CGRectMake(15+60,[UIScreen mainScreen].bounds.size.height/2, kHubWidth, kHubHeight);
-
-    self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     [self addSubview:self.hubDetail];
+    [self addSubview:self.leftBtn];
+    [self addSubview:self.rightBtn];
 }
 
 - (void)setModel:(VBarModel *)model{

@@ -64,7 +64,7 @@
 /**  默认的Frame  */
 - (void)setUpUI
 {
-    self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.85];
     self.frame = CGRectMake(30.5, 0, 158, 55);
     [self.headLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:15];
     [self.headLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:-10];

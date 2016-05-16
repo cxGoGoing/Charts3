@@ -22,4 +22,5 @@
 - (void)dismissInView;
 @property (nonatomic,strong)VBarModel * model;
 @property (nonatomic,weak)id<ChartsHubDelegate> delegate;
+@property (nonatomic,assign)NSInteger currentIndex;
 @end
