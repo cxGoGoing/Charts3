@@ -13,6 +13,7 @@
 #import "ChartsTitleView.h"
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
+#import "VBarModel.h"
 @interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
@@ -145,7 +146,10 @@ static inline CGFloat calBackViewHeight(){
     if(startY-kHubHeight<CGRectGetMinY(self.collectionView.frame)){/**  当前视图放不下的情况下从上往下放  */
         positionY = startY +kHubHeight+5;
     }
-
+    VBarModel * model = [[VBarModel alloc]init];
+    model.titleString = @"2015-10";
+    model.detailNumber = 54000;
+    [ChartsHub shareInstance].model = model;
     [[ChartsHub shareInstance]showAtAxisY:positionY];
     [self.view addSubview:[ChartsHub shareInstance]];
 }

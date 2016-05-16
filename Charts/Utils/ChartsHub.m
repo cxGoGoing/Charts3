@@ -8,9 +8,14 @@
 
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
+#import "VBarModel.h"
 @interface ChartsHub()
+@property (nonatomic,strong)UIButton * leftBtn;/**<  选择按钮  */
+@property (nonatomic,strong)UIButton * rightBtn;
+@property (nonatomic,strong)UILabel * detailLabel;/**<  详情label  */
 @end
 static ChartsHub * _chartsHub = nil;
+static const CGFloat kAmimationTime = 0.5;
 
 @implementation ChartsHub
 + (ChartsHub*)shareInstance{
@@ -31,6 +36,14 @@ static ChartsHub * _chartsHub = nil;
     return self;
 }
 
+- (void)setUpUI{
+
+}
+
+- (void)setModel:(VBarModel *)model{
+    _model = model;
+}
+
 - (void)dismissInView{
     if(!self.superview)return;
     NSAssert(self.superview != nil, @"父视图不存在");
@@ -39,7 +52,7 @@ static ChartsHub * _chartsHub = nil;
 
 #pragma mark 改变视图位置的方法
 - (void)showAtAxisY:(CGFloat)axisY{
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:kAmimationTime animations:^{
         self.centerY = axisY;
         [self layoutIfNeeded];
     }];
