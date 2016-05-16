@@ -160,6 +160,10 @@ static inline CGFloat calBackViewHeight()
 - (void)hideHub
 {
     [[ChartsHub shareInstance] dismissInView];
+    [self.dataArray enumerateObjectsUsingBlock:^( VBarModel * model,NSUInteger idx, BOOL * _Nonnull stop) {
+        model.isSelected = NO;
+    }];
+    [self.collectionView reloadData];
 }
 
 - (void)siftData:(UIButton*)btn
@@ -190,9 +194,9 @@ static inline CGFloat calBackViewHeight()
     }
     [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
         if(idx == vBarIndex){
-            model.isSelected = YES;
-        }else{
             model.isSelected = NO;
+        }else{
+            model.isSelected = YES;
         }
     }];
     [ChartsHub shareInstance].model = self.dataArray[vBarIndex];
@@ -201,7 +205,6 @@ static inline CGFloat calBackViewHeight()
     self.currentIndex = vBarIndex;
     [self.view addSubview:[ChartsHub shareInstance]];
     [self.collectionView reloadData];
-
 
 
 }
@@ -215,9 +218,9 @@ static inline CGFloat calBackViewHeight()
 
     [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
         if(idx == index){
-            model.isSelected = YES;
-        }else{
             model.isSelected = NO;
+        }else{
+            model.isSelected = YES;
         }
     }];
     [self.collectionView reloadData];
@@ -234,9 +237,9 @@ static inline CGFloat calBackViewHeight()
 
     [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
         if(idx == index){
-            model.isSelected = YES;
-        }else{
             model.isSelected = NO;
+        }else{
+            model.isSelected = YES;
         }
     }];
     [self.collectionView reloadData];
