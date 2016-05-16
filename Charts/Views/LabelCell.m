@@ -8,14 +8,13 @@
 
 #import "LabelCell.h"
 #import <PureLayout.h>
-#import <BlocksKit+UIKit.h>
 #import "UIView+Extension.h"
 @interface LabelCell ()
 @property (nonatomic, strong) UILabel* descLabel;
 @property (nonatomic, strong) UIButton* detailButton;
 @property (nonatomic, strong) NSLayoutConstraint* widthConstraint;
 @property (nonatomic, strong) CAShapeLayer* barLayer;
-@property (nonatomic,strong) CABasicAnimation * barAnimation;
+@property (nonatomic, strong) CABasicAnimation* barAnimation;
 @end
 @implementation LabelCell
 static const CGFloat kAnimationTime = 0.5;
@@ -34,8 +33,9 @@ static const CGFloat kAnimationTime = 0.5;
     }
 }
 
-- (CABasicAnimation*)barAnimation{
-    if(!_barAnimation){
+- (CABasicAnimation*)barAnimation
+{
+    if (!_barAnimation) {
         _barAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
         _barAnimation.duration = kAnimationTime;
         _barAnimation.fromValue = @0;
@@ -43,7 +43,6 @@ static const CGFloat kAnimationTime = 0.5;
         _barAnimation.delegate = self;
         _barAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         _barAnimation.removedOnCompletion = YES;
-
     }
     return _barAnimation;
 }
@@ -52,8 +51,8 @@ static const CGFloat kAnimationTime = 0.5;
 {
     _textString = [textString copy];
     self.descLabel.text = textString;
-    self.widthConstraint.constant = (textString.length+4)*10;
-    self.barLayer.path = [self barLayerPathWith:(textString.length+4)*10].CGPath;
+    self.widthConstraint.constant = (textString.length + 4) * 10;
+    self.barLayer.path = [self barLayerPathWith:(textString.length + 4) * 10].CGPath;
 }
 
 - (void)setUpUI
@@ -67,11 +66,11 @@ static const CGFloat kAnimationTime = 0.5;
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:0];
     [self.contentView.layer addSublayer:self.barLayer];
     [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
-
 }
 
-- (UIButton*)detailButton{
-    if(!_detailButton){
+- (UIButton*)detailButton
+{
+    if (!_detailButton) {
         _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_detailButton setBackgroundColor:[UIColor clearColor]];
         [_detailButton addTarget:self action:@selector(didClickDetailButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -80,17 +79,18 @@ static const CGFloat kAnimationTime = 0.5;
     return _detailButton;
 }
 
-- (void)didClickDetailButton:(UIButton*)sender{
-    CGRect rect =  [self convertRect:sender.frame toView:self.superview.superview];
-    if([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:)]){
-        [self.delegate userClickedOnVBarIndexItem:self.indexPath.section];
+- (void)didClickDetailButton:(UIButton*)sender
+{
+    CGRect rect = [self convertRect:sender.frame toView:self.superview.superview];
+    if ([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:inRect:)]) {
+        [self.delegate userClickedOnVBarIndexItem:self.indexPath.section inRect:rect];
     }
-    DDLogDebug(@"%@",NSStringFromCGRect(rect));
-
+    DDLogDebug(@"%@", NSStringFromCGRect(rect));
 }
 
-- (CAShapeLayer*)barLayer{
-    if(!_barLayer){
+- (CAShapeLayer*)barLayer
+{
+    if (!_barLayer) {
         _barLayer = [CAShapeLayer layer];
         _barLayer.strokeColor = [UIColor blueColor].CGColor;
         _barLayer.fillColor = [UIColor clearColor].CGColor;
@@ -99,13 +99,13 @@ static const CGFloat kAnimationTime = 0.5;
     return _barLayer;
 }
 
-- (UIBezierPath*)barLayerPathWith:(CGFloat)length{
-    UIBezierPath * beizerPath = [UIBezierPath bezierPath];
+- (UIBezierPath*)barLayerPathWith:(CGFloat)length
+{
+    UIBezierPath* beizerPath = [UIBezierPath bezierPath];
     [beizerPath moveToPoint:CGPointMake(60, 25)];
-    [beizerPath addLineToPoint:CGPointMake(length+60, 25)];
+    [beizerPath addLineToPoint:CGPointMake(length + 60, 25)];
     return beizerPath;
 }
-
 
 - (UILabel*)descLabel
 {

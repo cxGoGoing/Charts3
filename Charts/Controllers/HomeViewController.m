@@ -130,9 +130,8 @@ static inline CGFloat calBackViewHeight(){
     [self.view addSubview:self.siftBtn];
 }
 
-- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex
-{
-    DDLogInfo(@"%zi", vBarIndex);
+- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect{
+    
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView

@@ -12,5 +12,5 @@
 - (void)userClickedOnPieIndexItem:(NSInteger)pieIndex;
 - (void)didUnselectPieItem;
 - (void)didUnselectVBarItem;
-- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex;
+- (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect;
 @end
