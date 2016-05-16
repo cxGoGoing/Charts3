@@ -20,6 +20,10 @@
 @property (nonatomic, strong) UIButton* siftBtn;
 @end
 
+static const CGFloat kBottomHeight = 60;/**<  筛选按钮高度  */
+static const CGFloat kMarginY = 30;/**<  collectionView的高度和底部backView的Y方向高度差  */
+static const CGFloat kMarginBottom = 30;/**<  colleciontView和底部bottom的距离  */
+
 @implementation HomeViewController
 
 - (void)viewDidLoad
@@ -47,11 +51,16 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
     CGSize size = [text sizeWithAttributes:dictionary];
     return size;
 }
+static inline CGFloat calBackViewHeight(){
+    CGFloat height = [UIScreen mainScreen].bounds.size.height -20-154/2-30-kBottomHeight-10-kMarginBottom-30;
+    return height;
+}
 
 - (VBarBackGroundView*)backGroundView
 {
     if (!_backGroundView) {
-        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(80, 131 + 64, [UIScreen mainScreen].bounds.size.width - 15 - 85, 380)];
+
+        _backGroundView = [[VBarBackGroundView alloc] initWithFrame:CGRectMake(80, 131 + 64, [UIScreen mainScreen].bounds.size.width - 15 - 85, calBackViewHeight())];
         _backGroundView.backgroundColor = [UIColor clearColor];
         _backGroundView.userInteractionEnabled = NO;
     }
@@ -66,9 +75,9 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
         [_siftBtn setTitle:@"筛选" forState:UIControlStateNormal];
         _siftBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_siftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        _siftBtn.titleEdgeInsets = UIEdgeInsetsMake(50, -50, 0, 0);
+        _siftBtn.titleEdgeInsets = UIEdgeInsetsMake(50, -32, 0, 0);
         [_siftBtn addTarget:self action:@selector(siftData:) forControlEvents:UIControlEventTouchUpInside];
-        _siftBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 100, [UIScreen mainScreen].bounds.size.height - 100, 100, 60);
+        _siftBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 50, [UIScreen mainScreen].bounds.size.height - 70, 32, kBottomHeight);
     }
     return _siftBtn;
 }
@@ -87,7 +96,7 @@ static inline CGSize calTextSize(NSString* text, NSInteger font)
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, 350) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight()-kMarginY) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
