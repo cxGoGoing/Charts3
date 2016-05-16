@@ -25,7 +25,7 @@
 static const CGFloat kBottomHeight = 60;/**<  筛选按钮高度  */
 static const CGFloat kMarginY = 30;/**<  collectionView的高度和底部backView的Y方向高度差  */
 static const CGFloat kMarginBottom = 30;/**<  colleciontView和底部bottom的距离  */
-
+static const CGFloat kHubHeight = 60;
 @implementation HomeViewController
 
 - (void)viewDidLoad
@@ -107,10 +107,17 @@ static inline CGFloat calBackViewHeight(){
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 22, 0);
+        UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideHub)];
+        [_collectionView addGestureRecognizer:tapGesture];
         layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, 40);
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
+}
+
+/**  隐藏hub  */
+- (void)hideHub{
+    [[ChartsHub shareInstance]dismissInView];
 }
 
 - (void)siftData:(UIButton*)btn
@@ -131,16 +138,20 @@ static inline CGFloat calBackViewHeight(){
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.siftBtn];
 }
-
+#pragma mark ChartsDelegate方法
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect{
-    [[ChartsHub shareInstance]showAtAxisY:CGRectGetMidY(rect)];
+    CGFloat startY = CGRectGetMinY(rect);
+    CGFloat positionY = startY-kHubHeight/2-5;
+    if(startY-kHubHeight<CGRectGetMinY(self.collectionView.frame)){/**  当前视图放不下的情况下从上往下放  */
+        positionY = startY +kHubHeight+5;
+    }
+
+    [[ChartsHub shareInstance]showAtAxisY:positionY];
     [self.view addSubview:[ChartsHub shareInstance]];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [[ChartsHub shareInstance]dismissInView];
-}
 
+#pragma mark CollectionView Delegate and DataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView
 {
     return self.dataArray.count;
@@ -169,14 +180,5 @@ static inline CGFloat calBackViewHeight(){
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
