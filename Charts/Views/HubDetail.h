@@ -11,4 +11,5 @@
 @interface HubDetail : UIView
 @property (nonatomic,copy) NSString * headString;
 @property (nonatomic,copy) NSString * bottomString;
++ (instancetype)hubDetail;
 @end

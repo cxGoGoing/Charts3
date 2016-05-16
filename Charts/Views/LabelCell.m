@@ -85,7 +85,7 @@ static const CGFloat kAnimationTime = 0.5;
     if ([self.delegate respondsToSelector:@selector(userClickedOnVBarIndexItem:inRect:)]) {
         [self.delegate userClickedOnVBarIndexItem:self.indexPath.section inRect:rect];
     }
-    DDLogDebug(@"%@", NSStringFromCGRect(rect));
+    //DDLogDebug(@"%@", NSStringFromCGRect(rect));
 }
 
 - (CAShapeLayer*)barLayer

@@ -45,7 +45,7 @@ static const CGFloat kHubHeight = 55;
 
 - (HubDetail*)hubDetail{
     if(!_hubDetail){
-
+        _hubDetail = [HubDetail hubDetail];
     }
     return _hubDetail;
 }
@@ -63,10 +63,13 @@ static const CGFloat kHubHeight = 55;
     self.frame = CGRectMake(15+60,[UIScreen mainScreen].bounds.size.height/2, kHubWidth, kHubHeight);
 
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    [self addSubview:self.hubDetail];
 }
 
 - (void)setModel:(VBarModel *)model{
     _model = model;
+    self.hubDetail.headString = model.titleString;
+    self.hubDetail.bottomString = [NSString stringWithFormat:@"%f",model.detailNumber];
 }
 
 - (void)dismissInView{
