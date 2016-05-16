@@ -188,15 +188,22 @@ static inline CGFloat calBackViewHeight()
     if (startY - kHubHeight - 5 < CGRectGetMinY(self.collectionView.frame)) { /**  当前视图放不下的情况下从上往下放  */
         positionY = startY + kItemSize - 5;
     }
-    VBarModel* model = [[VBarModel alloc] init];
-    model.titleString = @"2015-10";
-    model.detailNumber = 54000;
-    [ChartsHub shareInstance].model = model;
+    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(idx == vBarIndex){
+            model.isSelected = YES;
+        }else{
+            model.isSelected = NO;
+        }
+    }];
+    [ChartsHub shareInstance].model = self.dataArray[vBarIndex];
     [[ChartsHub shareInstance] showAtAxisY:positionY];
     [ChartsHub shareInstance].delegate = self;
     self.currentIndex = vBarIndex;
-    DDLogInfo(@"点击弹出的vBarIndex:%zi", vBarIndex);
     [self.view addSubview:[ChartsHub shareInstance]];
+    [self.collectionView reloadData];
+
+
+
 }
 
 - (void)userClickedRight
@@ -205,8 +212,16 @@ static inline CGFloat calBackViewHeight()
     if (self.currentIndex == self.dataArray.count - 1) {
         index = 0;
     }
+
+    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(idx == index){
+            model.isSelected = YES;
+        }else{
+            model.isSelected = NO;
+        }
+    }];
+    [self.collectionView reloadData];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-    DDLogWarn(@"------%zi", index);
     self.currentIndex = index;
 }
 
@@ -216,6 +231,15 @@ static inline CGFloat calBackViewHeight()
     if (self.currentIndex == 0) {
         index = self.dataArray.count - 1;
     }
+
+    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(idx == index){
+            model.isSelected = YES;
+        }else{
+            model.isSelected = NO;
+        }
+    }];
+    [self.collectionView reloadData];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     DDLogWarn(@"------%zi", index);
     self.currentIndex = index;

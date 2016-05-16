@@ -47,19 +47,13 @@ static const CGFloat kAnimationTime = 0.5;
     return _barAnimation;
 }
 
-//- (void)setTextString:(NSString*)textString
-//{
-//    _textString = [textString copy];
-//    self.descLabel.text = textString;
-//    self.widthConstraint.constant = (textString.length + 4) * 10;
-//    self.barLayer.path = [self barLayerPathWith:(textString.length + 4) * 10].CGPath;
-//}
 
 - (void)setModel:(VBarModel *)model{
     _model = model;
     self.descLabel.text = model.titleString;
     self.widthConstraint.constant = model.detailNumber*20;
     self.barLayer.path = [self barLayerPathWith:model.detailNumber*20].CGPath;
+    self.barLayer.strokeColor = model.isSelected?[UIColor grayColor].CGColor:[UIColor blueColor].CGColor;
 }
 
 - (void)setUpUI
