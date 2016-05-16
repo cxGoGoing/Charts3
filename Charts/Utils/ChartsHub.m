@@ -24,19 +24,33 @@ static ChartsHub * _chartsHub = nil;
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
         self.bounds = CGRectMake(0, 0, 220, 50);
-        self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, 300);
-        self.backgroundColor = [UIColor redColor];
+        self.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
+        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     }
     return self;
 }
 
 - (void)dismissInView{
-    NSAssert(self.superview!=nil, @"父视图存在");
+    if(!self.superview)return;
+    NSAssert(self.superview != nil, @"父视图不存在");
     [self removeFromSuperview];
 }
 
+#pragma mark 改变视图位置的方法
 - (void)showAtAxisY:(CGFloat)axisY{
-    self.centerY = axisY;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.centerY = axisY;
+        [self layoutIfNeeded];
+    }];
+
+}
+
+- (void)showAtAxisX:(CGFloat)axisX{
+
+}
+
+- (void)showAtPoint:(CGPoint)point{
+
 }
 
 @end

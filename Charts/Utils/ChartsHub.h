@@ -17,6 +17,8 @@
 @interface ChartsHub : UIView
 + (ChartsHub*)shareInstance;
 - (void)showAtAxisY:(CGFloat)axisY;
+- (void)showAtAxisX:(CGFloat)axisX;
+- (void)showAtPoint:(CGPoint)point;
 - (void)dismissInView;
 @property (nonatomic,strong)VBarModel * model;
 @property (nonatomic,weak)id<ChartsHubDelegate> delegate;
