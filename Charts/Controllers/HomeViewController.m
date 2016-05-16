@@ -13,6 +13,7 @@
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
 #import "VBarModel.h"
+#import <MJExtension.h>
 @interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate, ChartsHubDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
