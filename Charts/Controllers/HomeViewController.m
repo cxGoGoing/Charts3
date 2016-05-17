@@ -40,7 +40,8 @@ static const CGFloat kItemSize = 40;
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     [self hideHub];
 }
@@ -166,7 +167,32 @@ static inline CGFloat calBackViewHeight()
 {
     self.titleView.dataArray = @[ @"销售总和", @"客户名", @"筛选条件" ];
     [self.dataArray removeAllObjects];
-    [self.dataArray addObjectsFromArray:@[ @"1", @"12", @"123", @"1234" ]];
+    self.dataArray = [VBarModel objectArrayWithKeyValuesArray:@[ @{ @"titleString" : @"魅族科技棒棒哒",
+        @"detailNumber" : @"1" },
+        @{ @"titleString" : @"小米科技棒",
+            @"detailNumber" : @"2" },
+        @{ @"titleString" : @"360棒棒哒",
+            @"detailNumber" : @"7.9" },
+        @{ @"titleString" : @"通过前几篇",
+            @"detailNumber" : @"5" },
+        @{ @"titleString" : @"UIView层",
+            @"detailNumber" : @"9.1" },
+        @{ @"titleString" : @"2015-1",
+            @"detailNumber" : @"11" },
+        @{ @"titleString" : @"2015-2",
+            @"detailNumber" : @"12" },
+        @{ @"titleString" : @"2015-3",
+            @"detailNumber" : @"8.6" },
+        @{ @"titleString" : @"2015-4",
+            @"detailNumber" : @"4.3" },
+        @{ @"titleString" : @"2015-5",
+            @"detailNumber" : @"11.6" },
+        @{ @"titleString" : @"2015-6",
+            @"detailNumber" : @"9.6" },
+        @{ @"titleString" : @"2015-7",
+            @"detailNumber" : @"4.6" },
+        @{ @"titleString" : @"2015-8",
+            @"detailNumber" : @"1.6" } ]];
     [self.collectionView reloadData];
     _titleView.contentSize = CGSizeMake(calTextSize(self.titleView.dataArray.lastObject, 13).width + 36, 0);
 }
@@ -184,7 +210,7 @@ static inline CGFloat calBackViewHeight()
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect
 {
     self.previousState = [ChartsHub shareInstance].isShow;
-    DDLogError(@"previous%@  current %@",self.previousState?@"Yes":@"NO",[ChartsHub shareInstance].isShow?@"Yes":@"NO");
+    DDLogError(@"previous%@  current %@", self.previousState ? @"Yes" : @"NO", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
     CGFloat startY = CGRectGetMinY(rect);
     CGFloat positionY = startY - kHubHeight - 5;
     if (startY - kHubHeight - 5 < CGRectGetMinY(self.collectionView.frame)) { /**  当前视图放不下的情况下从上往下放  */
@@ -203,9 +229,11 @@ static inline CGFloat calBackViewHeight()
     [self.view addSubview:[ChartsHub shareInstance]];
 
     if ([ChartsHub shareInstance].isShow && self.previousState) {
-        if(vBarIndex == self.currentIndex)return;
+        if (vBarIndex == self.currentIndex)
+            return;
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
-        if(self.currentIndex == NSNotFound)return;
+        if (self.currentIndex == NSNotFound)
+            return;
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:vBarIndex]];
         DDLogDebug(@"使用单条刷星");
     }
