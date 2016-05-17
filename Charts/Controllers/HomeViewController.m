@@ -165,6 +165,7 @@ static inline CGFloat calBackViewHeight()
 
 - (void)siftData:(UIButton*)btn
 {
+    [self hideHub];
     self.titleView.dataArray = @[ @"销售总和", @"客户名", @"筛选条件" ];
     [self.dataArray removeAllObjects];
     self.dataArray = [VBarModel objectArrayWithKeyValuesArray:@[ @{ @"titleString" : @"魅族科技棒棒哒",
