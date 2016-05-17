@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-
+__attribute__((constructor))
+static void beforeMain(void){
+    NSLog(@"beforeMain");
+}
+__attribute__((destructor))
+static void afterMain(void){
+    NSLog(@"afterMain");
+}
 int main(int argc, char * argv[]) {
     @autoreleasepool {
+        NSLog(@"main");
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
