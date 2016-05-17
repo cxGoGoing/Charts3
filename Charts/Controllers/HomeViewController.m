@@ -229,10 +229,14 @@ static inline CGFloat calBackViewHeight()
     [ChartsHub shareInstance].delegate = self;
     [self.view addSubview:[ChartsHub shareInstance]];
     if ([ChartsHub shareInstance].isShow && self.previousState) {
-        if (vBarIndex == self.currentIndex)
+        if (vBarIndex == self.currentIndex){
+            [self hideHub];
             return;
-        [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex], [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
-        // DDLogDebug(@"使用单条刷星");
+        }
+        else{
+            [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex], [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
+            // DDLogDebug(@"使用单条刷星");
+        }
     }
     else {
         [self.collectionView reloadData];
@@ -312,6 +316,7 @@ static inline CGFloat calBackViewHeight()
 {
     VBarCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([VBarCell class]) forIndexPath:indexPath];
     //cell.textString = self.dataArray[indexPath.section];
+    DDLogDebug(@"地址---%p section--%zi",cell,indexPath.section);
     cell.model = self.dataArray[indexPath.section];
     cell.indexPath = indexPath;
     cell.delegate = self;
