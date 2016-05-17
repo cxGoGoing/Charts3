@@ -199,7 +199,6 @@ static inline CGFloat calBackViewHeight()
         [self.collectionView reloadData];
     }
     else {
-
         [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex],
             [NSIndexPath indexPathForItem:9 inSection:self.currentIndex] ]];
     }
@@ -221,15 +220,15 @@ static inline CGFloat calBackViewHeight()
         }
     }];
     [ChartsHub shareInstance].model = self.dataArray[index];
-    [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index],
-        [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
+    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
+    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:index]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     self.currentIndex = index;
 }
 
 - (void)userClickedLeft
 {
-    //DDLogInfo(@"%@", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
+
     NSInteger index = self.currentIndex - 1;
     if (self.currentIndex == 0) {
         index = self.dataArray.count - 1;
@@ -243,8 +242,8 @@ static inline CGFloat calBackViewHeight()
         }
     }];
     [ChartsHub shareInstance].model = self.dataArray[index];
-    [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index],
-        [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
+    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
+    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:index]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     //DDLogWarn(@"------%zi", index);
     self.currentIndex = index;
