@@ -9,6 +9,7 @@
 #import "VBarCell.h"
 #import <PureLayout.h>
 #import "UIView+Extension.h"
+#import "ChartsHub.h"
 @interface VBarCell ()
 @property (nonatomic, strong) UILabel* descLabel;
 @property (nonatomic, strong) UIButton* detailButton;
@@ -60,7 +61,12 @@ static const CGFloat kAnimationTime = 0.5;
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:0];
     [self.contentView.layer addSublayer:self.barLayer];
-    [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
+    if([ChartsHub shareInstance].isShow){
+        [self.barLayer removeAllAnimations];
+    }else{
+         [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
+    }
+
 }
 
 - (UIButton*)detailButton
