@@ -41,19 +41,18 @@ static const CGFloat kAnimationTime = 0.5;
     return _barAnimation;
 }
 
-
-- (void)setModel:(VBarModel *)model{
+- (void)setModel:(VBarModel*)model
+{
     _model = model;
     self.descLabel.text = model.titleString;
-    self.widthConstraint.constant = model.detailNumber*20;
-    self.barLayer.path = [self barLayerPathWith:model.detailNumber*20].CGPath;
-    self.barLayer.strokeColor = model.isSelected?[UIColor grayColor].CGColor:[UIColor blueColor].CGColor;
+    self.widthConstraint.constant = model.detailNumber * 20;
+    self.barLayer.path = [self barLayerPathWith:model.detailNumber * 20].CGPath;
+    self.barLayer.strokeColor = model.isSelected ? [UIColor grayColor].CGColor : [UIColor blueColor].CGColor;
 }
-
 
 - (void)setUpUI
 {
-   // self.contentView.backgroundColor = [UIColor colorWithRed:0.926 green:1.000 blue:0.026 alpha:0.3];
+    // self.contentView.backgroundColor = [UIColor colorWithRed:0.926 green:1.000 blue:0.026 alpha:0.3];
     self.descLabel.frame = CGRectMake(-5, 50, 90, 20);
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10];
     [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];
@@ -61,12 +60,12 @@ static const CGFloat kAnimationTime = 0.5;
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:60];
     self.widthConstraint = [self.detailButton autoSetDimension:ALDimensionWidth toSize:0];
     [self.contentView.layer addSublayer:self.barLayer];
-    if([ChartsHub shareInstance].isShow){
+    if ([ChartsHub shareInstance].isShow) {
         [self.barLayer removeAllAnimations];
-    }else{
-         [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
     }
-
+    else {
+        [self.barLayer addAnimation:self.barAnimation forKey:@"lineAnimation"];
+    }
 }
 
 - (UIButton*)detailButton
