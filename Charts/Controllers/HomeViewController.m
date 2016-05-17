@@ -22,6 +22,7 @@
 @property (nonatomic, strong) ChartsTitleView* titleView; /**<  滚动视图  */
 @property (nonatomic, strong) UIButton* siftBtn;
 @property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, assign) BOOL previousState; /**< 弹出框之前的状态  */
 @end
 
 static const CGFloat kBottomHeight = 60; /**<  筛选按钮高度  */
@@ -177,7 +178,8 @@ static inline CGFloat calBackViewHeight()
 #pragma mark ChartsDelegate方法
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect
 {
-
+    self.previousState = [ChartsHub shareInstance].isShow;
+    DDLogError(@"previous%@  current %@",self.previousState?@"Yes":@"NO",[ChartsHub shareInstance].isShow?@"Yes":@"NO");
     CGFloat startY = CGRectGetMinY(rect);
     CGFloat positionY = startY - kHubHeight - 5;
     if (startY - kHubHeight - 5 < CGRectGetMinY(self.collectionView.frame)) { /**  当前视图放不下的情况下从上往下放  */
@@ -195,12 +197,13 @@ static inline CGFloat calBackViewHeight()
     [ChartsHub shareInstance].delegate = self;
     [self.view addSubview:[ChartsHub shareInstance]];
 
-    if ([ChartsHub shareInstance].isShow) {
-        [self.collectionView reloadData];
+    if ([ChartsHub shareInstance].isShow && self.previousState) {
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:vBarIndex]];
+        DDLogDebug(@"使用单条刷星");
     }
     else {
-        [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex],
-            [NSIndexPath indexPathForItem:9 inSection:self.currentIndex] ]];
+        [self.collectionView reloadData];
     }
     [ChartsHub shareInstance].isShow = YES;
     self.currentIndex = vBarIndex;
@@ -233,7 +236,6 @@ static inline CGFloat calBackViewHeight()
     if (self.currentIndex == 0) {
         index = self.dataArray.count - 1;
     }
-
     [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
         if(idx == index){
             model.isSelected = NO;
