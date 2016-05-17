@@ -40,6 +40,11 @@ static const CGFloat kItemSize = 40;
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self hideHub];
+}
+
 - (ChartsTitleView*)titleView
 {
     if (!_titleView) {
@@ -198,7 +203,9 @@ static inline CGFloat calBackViewHeight()
     [self.view addSubview:[ChartsHub shareInstance]];
 
     if ([ChartsHub shareInstance].isShow && self.previousState) {
+        if(vBarIndex == self.currentIndex)return;
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
+        if(self.currentIndex == NSNotFound)return;
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:vBarIndex]];
         DDLogDebug(@"使用单条刷星");
     }
@@ -255,10 +262,11 @@ static inline CGFloat calBackViewHeight()
 - (void)hideHub
 {
     [[ChartsHub shareInstance] dismissInView];
-    DDLogInfo(@"%@", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
+    DDLogInfo(@"hideHub%@", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
     [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
         model.isSelected = NO;
     }];
+    self.currentIndex = NSNotFound;
     [self.collectionView reloadData];
 }
 
