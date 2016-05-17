@@ -24,4 +24,5 @@
 @property (nonatomic,weak)id<ChartsHubDelegate> delegate;
 @property (nonatomic,assign)NSInteger currentIndex;
 @property (nonatomic,assign)NSInteger maxIndex;
+@property (nonatomic,assign)BOOL isShow;
 @end

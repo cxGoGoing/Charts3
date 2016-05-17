@@ -99,6 +99,7 @@ static const CGFloat kHubHeight = 55;
 {
     if (!self.superview)
         return;
+    self.isShow = NO;
     NSAssert(self.superview != nil, @"父视图不存在");
     [self removeFromSuperview];
 }
@@ -106,6 +107,7 @@ static const CGFloat kHubHeight = 55;
 #pragma mark 改变视图位置的方法
 - (void)showAtAxisY:(CGFloat)axisY
 {
+    self.isShow = YES;
     [UIView animateWithDuration:kAmimationTime animations:^{
         self.y = axisY;
         [self layoutIfNeeded];

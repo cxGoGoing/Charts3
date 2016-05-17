@@ -156,16 +156,6 @@ static inline CGFloat calBackViewHeight()
     return _collectionView;
 }
 
-/**  隐藏hub  */
-- (void)hideHub
-{
-    [[ChartsHub shareInstance] dismissInView];
-    [self.dataArray enumerateObjectsUsingBlock:^( VBarModel * model,NSUInteger idx, BOOL * _Nonnull stop) {
-        model.isSelected = NO;
-    }];
-    [self.collectionView reloadData];
-}
-
 - (void)siftData:(UIButton*)btn
 {
     self.titleView.dataArray = @[ @"销售总和", @"客户名", @"筛选条件" ];
@@ -187,12 +177,13 @@ static inline CGFloat calBackViewHeight()
 #pragma mark ChartsDelegate方法
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect
 {
+
     CGFloat startY = CGRectGetMinY(rect);
     CGFloat positionY = startY - kHubHeight - 5;
     if (startY - kHubHeight - 5 < CGRectGetMinY(self.collectionView.frame)) { /**  当前视图放不下的情况下从上往下放  */
         positionY = startY + kItemSize - 5;
     }
-    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
         if(idx == vBarIndex){
             model.isSelected = NO;
         }else{
@@ -202,48 +193,70 @@ static inline CGFloat calBackViewHeight()
     [ChartsHub shareInstance].model = self.dataArray[vBarIndex];
     [[ChartsHub shareInstance] showAtAxisY:positionY];
     [ChartsHub shareInstance].delegate = self;
-    self.currentIndex = vBarIndex;
     [self.view addSubview:[ChartsHub shareInstance]];
-    [self.collectionView reloadData];
-}
 
+    if ([ChartsHub shareInstance].isShow) {
+        [self.collectionView reloadData];
+    }
+    else {
+
+        [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex],
+            [NSIndexPath indexPathForItem:9 inSection:self.currentIndex] ]];
+    }
+    [ChartsHub shareInstance].isShow = YES;
+    self.currentIndex = vBarIndex;
+}
 - (void)userClickedRight
 {
+    //DDLogInfo(@"%@", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
     NSInteger index = self.currentIndex + 1;
     if (self.currentIndex == self.dataArray.count - 1) {
         index = 0;
     }
-
-    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
         if(idx == index){
             model.isSelected = NO;
         }else{
             model.isSelected = YES;
         }
     }];
-    [self.collectionView reloadData];
+    [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index],
+        [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     self.currentIndex = index;
 }
 
 - (void)userClickedLeft
 {
+    //DDLogInfo(@"%@", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
     NSInteger index = self.currentIndex - 1;
     if (self.currentIndex == 0) {
         index = self.dataArray.count - 1;
     }
 
-    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel*model, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
         if(idx == index){
             model.isSelected = NO;
         }else{
             model.isSelected = YES;
         }
     }];
-    [self.collectionView reloadData];
+    [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index],
+        [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-    DDLogWarn(@"------%zi", index);
+    //DDLogWarn(@"------%zi", index);
     self.currentIndex = index;
+}
+
+/**  隐藏hub  */
+- (void)hideHub
+{
+    [[ChartsHub shareInstance] dismissInView];
+    DDLogInfo(@"%@", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
+    [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
+        model.isSelected = NO;
+    }];
+    [self.collectionView reloadData];
 }
 
 - (void)userClickedCenter
