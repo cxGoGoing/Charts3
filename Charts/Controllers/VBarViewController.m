@@ -315,8 +315,7 @@ static inline CGFloat calBackViewHeight()
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
 {
     VBarCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([VBarCell class]) forIndexPath:indexPath];
-    //cell.textString = self.dataArray[indexPath.section];
-    DDLogDebug(@"地址---%p section--%zi",cell,indexPath.section);
+    //DDLogDebug(@"地址---%p section--%zi",cell,indexPath.section);
     cell.model = self.dataArray[indexPath.section];
     cell.indexPath = indexPath;
     cell.delegate = self;
