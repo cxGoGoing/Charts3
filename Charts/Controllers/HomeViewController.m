@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "LabelCell.h"
+#import "VBarCell.h"
 #import "VBarBackGroundView.h"
 #import "ChartsTitleView.h"
 #import "ChartsHub.h"
@@ -141,7 +141,7 @@ static inline CGFloat calBackViewHeight()
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight() - kMarginY) collectionViewLayout:layout];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        [_collectionView registerClass:[LabelCell class] forCellWithReuseIdentifier:NSStringFromClass([LabelCell class])];
+        [_collectionView registerClass:[VBarCell class] forCellWithReuseIdentifier:NSStringFromClass([VBarCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -216,7 +216,7 @@ static inline CGFloat calBackViewHeight()
     [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
         if(idx == index){
             model.isSelected = NO;
-        }else{
+        }else if(idx == self.currentIndex){
             model.isSelected = YES;
         }
     }];
@@ -237,7 +237,7 @@ static inline CGFloat calBackViewHeight()
     [self.dataArray enumerateObjectsUsingBlock:^(VBarModel* model, NSUInteger idx, BOOL* _Nonnull stop) {
         if(idx == index){
             model.isSelected = NO;
-        }else{
+        }else if(idx == self.currentIndex){
             model.isSelected = YES;
         }
     }];
@@ -276,7 +276,7 @@ static inline CGFloat calBackViewHeight()
 
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
 {
-    LabelCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([LabelCell class]) forIndexPath:indexPath];
+    VBarCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([VBarCell class]) forIndexPath:indexPath];
     //cell.textString = self.dataArray[indexPath.section];
     cell.model = self.dataArray[indexPath.section];
     cell.indexPath = indexPath;

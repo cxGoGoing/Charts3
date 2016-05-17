@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChartViewDelegate.h"
 #import "VBarModel.h"
-@interface LabelCell : UICollectionViewCell
-//@property (nonatomic,copy) NSString * textString;
+@interface VBarCell : UICollectionViewCell
 @property (nonatomic,weak)id<ChartViewDelegate> delegate;
 @property (nonatomic,strong)NSIndexPath * indexPath;
 @property (nonatomic,strong)VBarModel * model;

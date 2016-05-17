@@ -6,17 +6,17 @@
 //  Copyright © 2016年 chengxun. All rights reserved.
 //
 
-#import "LabelCell.h"
+#import "VBarCell.h"
 #import <PureLayout.h>
 #import "UIView+Extension.h"
-@interface LabelCell ()
+@interface VBarCell ()
 @property (nonatomic, strong) UILabel* descLabel;
 @property (nonatomic, strong) UIButton* detailButton;
 @property (nonatomic, strong) NSLayoutConstraint* widthConstraint;
 @property (nonatomic, strong) CAShapeLayer* barLayer;
 @property (nonatomic, strong) CABasicAnimation* barAnimation;
 @end
-@implementation LabelCell
+@implementation VBarCell
 static const CGFloat kAnimationTime = 0.5;
 - (instancetype)initWithFrame:(CGRect)frame
 {
