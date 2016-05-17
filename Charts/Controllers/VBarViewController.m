@@ -6,7 +6,7 @@
 //  Copyright © 2016年 chengxun. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "VBarViewController.h"
 #import "VBarCell.h"
 #import "VBarBackGroundView.h"
 #import "ChartsTitleView.h"
@@ -14,7 +14,7 @@
 #import "UIView+Extension.h"
 #import "VBarModel.h"
 #import <MJExtension.h>
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate, ChartsHubDelegate>
+@interface VBarViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate, ChartsHubDelegate>
 @property (nonatomic, strong) UICollectionView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
@@ -30,7 +30,7 @@ static const CGFloat kMarginY = 30; /**<  collectionView的高度和底部backVi
 static const CGFloat kMarginBottom = 30; /**<  colleciontView和底部bottom的距离  */
 static const CGFloat kHubHeight = 55;
 static const CGFloat kItemSize = 40;
-@implementation HomeViewController
+@implementation VBarViewController
 
 - (void)viewDidLoad
 {
@@ -229,11 +229,11 @@ static inline CGFloat calBackViewHeight()
     [ChartsHub shareInstance].delegate = self;
     [self.view addSubview:[ChartsHub shareInstance]];
     if ([ChartsHub shareInstance].isShow && self.previousState) {
-        if (vBarIndex == self.currentIndex){
+        if (vBarIndex == self.currentIndex) {
             [self hideHub];
             return;
         }
-        else{
+        else {
             [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex], [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
             // DDLogDebug(@"使用单条刷星");
         }

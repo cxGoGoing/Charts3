@@ -7,7 +7,7 @@
 //
 
 #import "BeginViewController.h"
-#import "HomeViewController.h"
+#import "VBarViewController.h"
 #import <PureLayout.h>
 @interface BeginViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView * tableView;
@@ -58,7 +58,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    HomeViewController * homeVc = [[HomeViewController alloc]init];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    VBarViewController * homeVc = [[VBarViewController alloc]init];
     [self.navigationController pushViewController:homeVc animated:YES];
 }
 

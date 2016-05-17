@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "HomeViewController.h"
 #import "LogUtil.h"
 #import "BeginViewController.h"
 @interface AppDelegate ()

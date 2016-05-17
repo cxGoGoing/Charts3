@@ -12,7 +12,7 @@
 		575750A31CE308EE00A81AD1 /* VBarBackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 575750A21CE308EE00A81AD1 /* VBarBackGroundView.m */; };
 		576EFC0E1CE5668000A7DB8C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 576EFC0D1CE5668000A7DB8C /* UIView+Extension.m */; };
 		576EFC111CE56CDC00A7DB8C /* ChartSectionDetailLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 576EFC101CE56CDC00A7DB8C /* ChartSectionDetailLabel.m */; };
-		579F4A381CDB43EA00D50A3A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A371CDB43EA00D50A3A /* HomeViewController.m */; };
+		579F4A381CDB43EA00D50A3A /* VBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A371CDB43EA00D50A3A /* VBarViewController.m */; };
 		579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A3C1CDB45D500D50A3A /* LogUtil.m */; };
 		57C1F23A1CE471880030A67D /* ChartsTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1F2391CE471880030A67D /* ChartsTitleView.m */; };
 		57C1F23D1CE477B50030A67D /* ChartsSectionLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1F23C1CE477B50030A67D /* ChartsSectionLabel.m */; };
@@ -56,8 +56,8 @@
 		576EFC0D1CE5668000A7DB8C /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		576EFC0F1CE56CDC00A7DB8C /* ChartSectionDetailLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartSectionDetailLabel.h; sourceTree = "<group>"; };
 		576EFC101CE56CDC00A7DB8C /* ChartSectionDetailLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartSectionDetailLabel.m; sourceTree = "<group>"; };
-		579F4A361CDB43EA00D50A3A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		579F4A371CDB43EA00D50A3A /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		579F4A361CDB43EA00D50A3A /* VBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBarViewController.h; sourceTree = "<group>"; };
+		579F4A371CDB43EA00D50A3A /* VBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarViewController.m; sourceTree = "<group>"; };
 		579F4A391CDB43FB00D50A3A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		579F4A3B1CDB45D500D50A3A /* LogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogUtil.h; sourceTree = "<group>"; };
 		579F4A3C1CDB45D500D50A3A /* LogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogUtil.m; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 		579F4A351CDB43C000D50A3A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				579F4A361CDB43EA00D50A3A /* HomeViewController.h */,
-				579F4A371CDB43EA00D50A3A /* HomeViewController.m */,
+				579F4A361CDB43EA00D50A3A /* VBarViewController.h */,
+				579F4A371CDB43EA00D50A3A /* VBarViewController.m */,
 				574E0FF61CE4510700372EE3 /* ChartViewDelegate.h */,
 				57FCEA141CE73DBD007E1BF9 /* BeginViewController.h */,
 				57FCEA151CE73DBD007E1BF9 /* BeginViewController.m */,
@@ -444,7 +444,7 @@
 				575750A31CE308EE00A81AD1 /* VBarBackGroundView.m in Sources */,
 				57E31F891CDB429A0084FA78 /* main.m in Sources */,
 				57C1F23A1CE471880030A67D /* ChartsTitleView.m in Sources */,
-				579F4A381CDB43EA00D50A3A /* HomeViewController.m in Sources */,
+				579F4A381CDB43EA00D50A3A /* VBarViewController.m in Sources */,
 				57DBC62C1CE9A4440013ED3D /* HubDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
