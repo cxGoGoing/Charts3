@@ -26,13 +26,6 @@ static const CGFloat kAnimationTime = 0.5;
     return self;
 }
 
-- (void)touchesBegan:(NSSet<UITouch*>*)touches withEvent:(UIEvent*)event
-{
-    if ([self.delegate respondsToSelector:@selector(didUnselectVBarItem)]) {
-        [self.delegate didUnselectVBarItem];
-    }
-}
-
 - (CABasicAnimation*)barAnimation
 {
     if (!_barAnimation) {
@@ -56,9 +49,10 @@ static const CGFloat kAnimationTime = 0.5;
     self.barLayer.strokeColor = model.isSelected?[UIColor grayColor].CGColor:[UIColor blueColor].CGColor;
 }
 
+
 - (void)setUpUI
 {
-    self.contentView.backgroundColor = [UIColor colorWithRed:0.926 green:1.000 blue:0.026 alpha:0.3];
+   // self.contentView.backgroundColor = [UIColor colorWithRed:0.926 green:1.000 blue:0.026 alpha:0.3];
     self.descLabel.frame = CGRectMake(-5, 50, 90, 20);
     [self.detailButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10];
     [self.detailButton autoSetDimension:ALDimensionHeight toSize:30];

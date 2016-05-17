@@ -150,7 +150,7 @@ static inline CGFloat calBackViewHeight()
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[VBarCell class] forCellWithReuseIdentifier:NSStringFromClass([VBarCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
-        _collectionView.delegate = self;
+        //_collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
@@ -211,7 +211,7 @@ static inline CGFloat calBackViewHeight()
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect
 {
     self.previousState = [ChartsHub shareInstance].isShow;
-    DDLogError(@"previous%@  current %@", self.previousState ? @"Yes" : @"NO", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
+    //DDLogError(@"previous%@  current %@", self.previousState ? @"Yes" : @"NO", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
     CGFloat startY = CGRectGetMinY(rect);
     CGFloat positionY = startY - kHubHeight - 5;
     if (startY - kHubHeight - 5 < CGRectGetMinY(self.collectionView.frame)) { /**  当前视图放不下的情况下从上往下放  */
@@ -228,15 +228,11 @@ static inline CGFloat calBackViewHeight()
     [[ChartsHub shareInstance] showAtAxisY:positionY];
     [ChartsHub shareInstance].delegate = self;
     [self.view addSubview:[ChartsHub shareInstance]];
-
     if ([ChartsHub shareInstance].isShow && self.previousState) {
         if (vBarIndex == self.currentIndex)
             return;
-        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
-        if (self.currentIndex == NSNotFound)
-            return;
-        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:vBarIndex]];
-        DDLogDebug(@"使用单条刷星");
+        [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex], [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
+        // DDLogDebug(@"使用单条刷星");
     }
     else {
         [self.collectionView reloadData];
@@ -259,8 +255,7 @@ static inline CGFloat calBackViewHeight()
         }
     }];
     [ChartsHub shareInstance].model = self.dataArray[index];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:index]];
+    [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index], [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     self.currentIndex = index;
 }
@@ -280,8 +275,7 @@ static inline CGFloat calBackViewHeight()
         }
     }];
     [ChartsHub shareInstance].model = self.dataArray[index];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.currentIndex]];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:index]];
+    [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index], [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     //DDLogWarn(@"------%zi", index);
     self.currentIndex = index;
