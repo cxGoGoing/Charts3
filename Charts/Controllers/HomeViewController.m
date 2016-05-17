@@ -220,6 +220,7 @@ static inline CGFloat calBackViewHeight()
             model.isSelected = YES;
         }
     }];
+    [ChartsHub shareInstance].model = self.dataArray[index];
     [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index],
         [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
@@ -241,6 +242,7 @@ static inline CGFloat calBackViewHeight()
             model.isSelected = YES;
         }
     }];
+    [ChartsHub shareInstance].model = self.dataArray[index];
     [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:index],
         [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
