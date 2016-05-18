@@ -46,16 +46,6 @@ static const CGFloat kItemSize = 40;
     [self hideHub];
 }
 
-- (ChartsTitleView*)titleView
-{
-    if (!_titleView) {
-        _titleView = [[ChartsTitleView alloc] initWithFrame:CGRectMake(15, 20 + 64, [UIScreen mainScreen].bounds.size.width - 30, 154 / 2)];
-        _titleView.dataArray = @[ @"销售额总和", @"客户名", @"筛选条件1,筛选条件2,筛选条件3,筛选条件4,筛选条件5,筛选条件6,筛选条件7,筛选条件8,筛选条件9,筛选条件10" ];
-        _titleView.contentSize = CGSizeMake(calTextSize(_titleView.dataArray.lastObject, 13).width + 36, 0);
-    }
-    return _titleView;
-}
-
 static inline CGSize calTextSize(NSString* text, NSInteger font)
 {
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
@@ -67,6 +57,16 @@ static inline CGFloat calBackViewHeight()
 {
     CGFloat height = [UIScreen mainScreen].bounds.size.height - 20 - 154 / 2 - 30 - kBottomHeight - 10 - kMarginBottom - 30;
     return height;
+}
+#pragma mark getter and setter
+- (ChartsTitleView*)titleView
+{
+    if (!_titleView) {
+        _titleView = [[ChartsTitleView alloc] initWithFrame:CGRectMake(15, 20 + 64, [UIScreen mainScreen].bounds.size.width - 30, 154 / 2)];
+        _titleView.dataArray = @[ @"销售额总和", @"客户名", @"筛选条件1,筛选条件2,筛选条件3,筛选条件4,筛选条件5,筛选条件6,筛选条件7,筛选条件8,筛选条件9,筛选条件10" ];
+        _titleView.contentSize = CGSizeMake(calTextSize(_titleView.dataArray.lastObject, 13).width + 36, 0);
+    }
+    return _titleView;
 }
 
 - (VBarBackGroundView*)backGroundView
@@ -150,7 +150,6 @@ static inline CGFloat calBackViewHeight()
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         [_collectionView registerClass:[VBarCell class] forCellWithReuseIdentifier:NSStringFromClass([VBarCell class])];
         _collectionView.backgroundColor = [UIColor clearColor];
-        //_collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
@@ -158,11 +157,12 @@ static inline CGFloat calBackViewHeight()
         UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideHub)];
         [_collectionView addGestureRecognizer:tapGesture];
         layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - kItemSize, kItemSize);
-        [self.view addSubview:_collectionView];
     }
     return _collectionView;
 }
 
+
+#pragma mark private method
 - (void)siftData:(UIButton*)btn
 {
     [self hideHub];
