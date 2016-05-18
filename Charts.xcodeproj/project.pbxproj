@@ -12,6 +12,7 @@
 		575750A31CE308EE00A81AD1 /* VBarBackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 575750A21CE308EE00A81AD1 /* VBarBackGroundView.m */; };
 		576EFC0E1CE5668000A7DB8C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 576EFC0D1CE5668000A7DB8C /* UIView+Extension.m */; };
 		576EFC111CE56CDC00A7DB8C /* ChartSectionDetailLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 576EFC101CE56CDC00A7DB8C /* ChartSectionDetailLabel.m */; };
+		577B8B4F1CEC3A470052209C /* VBarForeGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 577B8B4E1CEC3A470052209C /* VBarForeGroundView.m */; };
 		579F4A381CDB43EA00D50A3A /* VBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A371CDB43EA00D50A3A /* VBarViewController.m */; };
 		579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4A3C1CDB45D500D50A3A /* LogUtil.m */; };
 		57C1F23A1CE471880030A67D /* ChartsTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1F2391CE471880030A67D /* ChartsTitleView.m */; };
@@ -49,13 +50,15 @@
 		4FAAF916012EABC3419D0DA6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		573307681CE2DE8300DF322A /* VBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBarCell.h; sourceTree = "<group>"; };
 		573307691CE2DE8300DF322A /* VBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarCell.m; sourceTree = "<group>"; };
-		574E0FF61CE4510700372EE3 /* ChartViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartViewDelegate.h; sourceTree = "<group>"; };
+		574E0FF61CE4510700372EE3 /* ChartViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChartViewDelegate.h; path = ../Controllers/ChartViewDelegate.h; sourceTree = "<group>"; };
 		575750A11CE308EE00A81AD1 /* VBarBackGroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBarBackGroundView.h; sourceTree = "<group>"; };
 		575750A21CE308EE00A81AD1 /* VBarBackGroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarBackGroundView.m; sourceTree = "<group>"; };
 		576EFC0C1CE5668000A7DB8C /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		576EFC0D1CE5668000A7DB8C /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		576EFC0F1CE56CDC00A7DB8C /* ChartSectionDetailLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartSectionDetailLabel.h; sourceTree = "<group>"; };
 		576EFC101CE56CDC00A7DB8C /* ChartSectionDetailLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartSectionDetailLabel.m; sourceTree = "<group>"; };
+		577B8B4D1CEC3A470052209C /* VBarForeGroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBarForeGroundView.h; sourceTree = "<group>"; };
+		577B8B4E1CEC3A470052209C /* VBarForeGroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarForeGroundView.m; sourceTree = "<group>"; };
 		579F4A361CDB43EA00D50A3A /* VBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBarViewController.h; sourceTree = "<group>"; };
 		579F4A371CDB43EA00D50A3A /* VBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBarViewController.m; sourceTree = "<group>"; };
 		579F4A391CDB43FB00D50A3A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				576EFC101CE56CDC00A7DB8C /* ChartSectionDetailLabel.m */,
 				57DBC62A1CE9A4440013ED3D /* HubDetail.h */,
 				57DBC62B1CE9A4440013ED3D /* HubDetail.m */,
+				577B8B4D1CEC3A470052209C /* VBarForeGroundView.h */,
+				577B8B4E1CEC3A470052209C /* VBarForeGroundView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,7 +145,6 @@
 			children = (
 				579F4A361CDB43EA00D50A3A /* VBarViewController.h */,
 				579F4A371CDB43EA00D50A3A /* VBarViewController.m */,
-				574E0FF61CE4510700372EE3 /* ChartViewDelegate.h */,
 				57FCEA141CE73DBD007E1BF9 /* BeginViewController.h */,
 				57FCEA151CE73DBD007E1BF9 /* BeginViewController.m */,
 			);
@@ -150,6 +154,7 @@
 		579F4A3A1CDB45CF00D50A3A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				574E0FF61CE4510700372EE3 /* ChartViewDelegate.h */,
 				576EFC0C1CE5668000A7DB8C /* UIView+Extension.h */,
 				576EFC0D1CE5668000A7DB8C /* UIView+Extension.m */,
 				579F4A3B1CDB45D500D50A3A /* LogUtil.h */,
@@ -439,6 +444,7 @@
 				579F4A3D1CDB45D500D50A3A /* LogUtil.m in Sources */,
 				57FCEA161CE73DBD007E1BF9 /* BeginViewController.m in Sources */,
 				57C1F23D1CE477B50030A67D /* ChartsSectionLabel.m in Sources */,
+				577B8B4F1CEC3A470052209C /* VBarForeGroundView.m in Sources */,
 				57E31F8C1CDB429A0084FA78 /* AppDelegate.m in Sources */,
 				57DBC6251CE96C330013ED3D /* VBarModel.m in Sources */,
 				575750A31CE308EE00A81AD1 /* VBarBackGroundView.m in Sources */,

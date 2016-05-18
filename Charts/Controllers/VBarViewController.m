@@ -13,9 +13,10 @@
 #import "ChartsHub.h"
 #import "UIView+Extension.h"
 #import "VBarModel.h"
+#import "VBarForeGroundView.h"
 #import <MJExtension.h>
 @interface VBarViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ChartViewDelegate, ChartsHubDelegate>
-@property (nonatomic, strong) UICollectionView* collectionView;
+@property (nonatomic, strong) VBarForeGroundView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
 @property (nonatomic, strong) UITableView* tableView;
@@ -142,21 +143,14 @@ static inline CGFloat calBackViewHeight()
     return _dataArray;
 }
 
-- (UICollectionView*)collectionView
+- (VBarForeGroundView*)collectionView
 {
     if (!_collectionView) {
-        UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight() - kMarginY) collectionViewLayout:layout];
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        _collectionView  = [VBarForeGroundView foreGroundViewWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight() - kMarginY)  itemSize:kItemSize];
         [_collectionView registerClass:[VBarCell class] forCellWithReuseIdentifier:NSStringFromClass([VBarCell class])];
-        _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
-        _collectionView.showsVerticalScrollIndicator = NO;
-        _collectionView.alwaysBounceVertical = YES;
-        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 22, 0);
         UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideHub)];
         [_collectionView addGestureRecognizer:tapGesture];
-        layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - kItemSize, kItemSize);
     }
     return _collectionView;
 }
