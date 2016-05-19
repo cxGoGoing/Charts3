@@ -126,7 +126,7 @@ static const CGFloat kHubHeight = 55;
 - (void)showAtPoint:(CGPoint)point{
     self.isShow = YES;
     [UIView animateWithDuration:kAmimationTime animations:^{
-        self.center = point;
+        self.origin = point;
         [self layoutIfNeeded];
     }];
 }
