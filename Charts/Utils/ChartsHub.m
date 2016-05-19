@@ -80,7 +80,7 @@ static const CGFloat kHubHeight = 55;
     }
     return _hubDetail;
 }
-
+/**  给定的起始位置,根据不同视图起始位置应该不同  */
 - (void)setUpUI
 {
     self.frame = CGRectMake(15 + 60, [UIScreen mainScreen].bounds.size.height / 2, kHubWidth, kHubHeight);
@@ -116,10 +116,19 @@ static const CGFloat kHubHeight = 55;
 
 - (void)showAtAxisX:(CGFloat)axisX
 {
+    self.isShow = YES;
+    [UIView animateWithDuration:kAmimationTime animations:^{
+        self.x = axisX;
+        [self layoutIfNeeded];
+    }];
 }
 
 - (void)showAtPoint:(CGPoint)point{
-
+    self.isShow = YES;
+    [UIView animateWithDuration:kAmimationTime animations:^{
+        self.center = point;
+        [self layoutIfNeeded];
+    }];
 }
 
 @end
