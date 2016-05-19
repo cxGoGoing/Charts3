@@ -160,6 +160,12 @@ static inline CGFloat calBackViewHeight()
 - (void)siftData:(UIButton*)btn
 {
     [self hideHub];
+    [_siftBtn setImage:[UIImage imageNamed:@"取消选择icon"] forState:UIControlStateNormal];
+    [_siftBtn setTitle:@"取消选择" forState:UIControlStateNormal];
+    CATransition * transition = [CATransition animation];
+    transition.type = @"cube";
+    transition.duration = 0.5;
+    [_siftBtn.layer addAnimation:transition forKey:@"cubeAnimation"];
     self.titleView.dataArray = @[ @"销售总和", @"客户名", @"筛选条件" ];
     [self.dataArray removeAllObjects];
     self.dataArray = [VBarModel objectArrayWithKeyValuesArray:@[ @{ @"titleString" : @"魅族科技棒棒哒",
