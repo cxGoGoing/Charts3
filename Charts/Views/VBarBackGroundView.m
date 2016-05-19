@@ -41,6 +41,7 @@ static const CGFloat kMarginY = 30;
         CGContextMoveToPoint(context, xPoints,yPoints );
         CGContextAddLineToPoint(context, xPoints,0);
         CGContextStrokePath(context);
+        CGContextClosePath(context);
     }
 }
 
