@@ -30,6 +30,20 @@ static const CGFloat kHubHeight = 55;
     return _chartsHub;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame hubLocationType:(ChartsHubLocation)type{
+    if(self = [super initWithFrame:frame]){
+
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame hubLocation:(CGPoint)point{
+    if(self = [super initWithFrame:frame]){
+
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -83,7 +97,9 @@ static const CGFloat kHubHeight = 55;
 /**  给定的起始位置,根据不同视图起始位置应该不同  */
 - (void)setUpUI
 {
-    self.frame = CGRectMake(15 + 60, [UIScreen mainScreen].bounds.size.height / 2, kHubWidth, kHubHeight);
+    self.bounds = CGRectMake(0, 0, kHubWidth, kHubHeight);
+    self.x = 75;
+    self.y = [UIScreen mainScreen].bounds.size.height / 2;
     [self addSubview:self.hubDetail];
     [self addSubview:self.leftBtn];
     [self addSubview:self.rightBtn];

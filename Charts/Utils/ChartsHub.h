@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef NS_ENUM(NSInteger, ChartsHubLocation) {
+    ChartsHubLocationVertical,
+    ChartsHubLocationHorizonal,
+    ChartsHubLocationCircle,
+    ChartsHubLocationLine,
+    ChartsHubLocationPointer
+};
 @class VBarModel;
-@protocol ChartsHubDelegate<NSObject>
+@protocol ChartsHubDelegate <NSObject>
 @optional
 - (void)userClickedCenter;
 - (void)userClickedLeft;
@@ -20,9 +27,9 @@
 - (void)showAtAxisX:(CGFloat)axisX;
 - (void)showAtPoint:(CGPoint)point;
 - (void)dismissInView;
-@property (nonatomic,strong)VBarModel * model;
-@property (nonatomic,weak)id<ChartsHubDelegate> delegate;
-@property (nonatomic,assign)NSInteger currentIndex;
-@property (nonatomic,assign)NSInteger maxIndex;
-@property (nonatomic,assign)BOOL isShow;
+@property (nonatomic, strong) VBarModel* model;
+@property (nonatomic, weak) id<ChartsHubDelegate> delegate;
+@property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, assign) NSInteger maxIndex;
+@property (nonatomic, assign) BOOL isShow;
 @end
