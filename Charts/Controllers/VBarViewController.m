@@ -145,7 +145,7 @@ static inline CGFloat calBackViewHeight()
 - (VBarForeGroundView*)collectionView
 {
     if (!_collectionView) {
-        _collectionView  = [VBarForeGroundView foreGroundViewWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight() - kMarginY)  itemSize:kItemSize];
+        _collectionView = [VBarForeGroundView foreGroundViewWithFrame:CGRectMake(15, 131 + 64, [UIScreen mainScreen].bounds.size.width - 30, calBackViewHeight() - kMarginY) itemSize:kItemSize];
         [_collectionView registerClass:[VBarCell class] forCellWithReuseIdentifier:NSStringFromClass([VBarCell class])];
         _collectionView.dataSource = self;
         UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideHub)];
@@ -154,14 +154,13 @@ static inline CGFloat calBackViewHeight()
     return _collectionView;
 }
 
-
 #pragma mark private method
 - (void)siftData:(UIButton*)btn
 {
     [self hideHub];
     [_siftBtn setImage:[UIImage imageNamed:@"取消选择icon"] forState:UIControlStateNormal];
     [_siftBtn setTitle:@"取消选择" forState:UIControlStateNormal];
-    CATransition * transition = [CATransition animation];
+    CATransition* transition = [CATransition animation];
     transition.type = @"cube";
     transition.duration = 0.5;
     [_siftBtn.layer addAnimation:transition forKey:@"cubeAnimation"];
@@ -210,7 +209,6 @@ static inline CGFloat calBackViewHeight()
 - (void)userClickedOnVBarIndexItem:(NSInteger)vBarIndex inRect:(CGRect)rect
 {
     self.previousState = [ChartsHub shareInstance].isShow;
-    //DDLogError(@"previous%@  current %@", self.previousState ? @"Yes" : @"NO", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
     CGFloat startY = CGRectGetMinY(rect);
     CGFloat positionY = startY - kHubHeight - 5;
     if (startY - kHubHeight - 5 < CGRectGetMinY(self.collectionView.frame)) { /**  当前视图放不下的情况下从上往下放  */
@@ -234,7 +232,6 @@ static inline CGFloat calBackViewHeight()
         }
         else {
             [self.collectionView reloadItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:vBarIndex], [NSIndexPath indexPathForItem:0 inSection:self.currentIndex] ]];
-            // DDLogDebug(@"使用单条刷星");
         }
     }
     else {
@@ -243,9 +240,10 @@ static inline CGFloat calBackViewHeight()
     [ChartsHub shareInstance].isShow = YES;
     self.currentIndex = vBarIndex;
 }
+
+/**  浮起框点击右侧的结果  */
 - (void)userClickedRight
 {
-    //DDLogInfo(@"%@", [ChartsHub shareInstance].isShow ? @"Yes" : @"NO");
     NSInteger index = self.currentIndex + 1;
     if (self.currentIndex == self.dataArray.count - 1) {
         index = 0;
@@ -262,7 +260,7 @@ static inline CGFloat calBackViewHeight()
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     self.currentIndex = index;
 }
-
+/**  浮起框点击左侧的结果  */
 - (void)userClickedLeft
 {
 
@@ -283,6 +281,9 @@ static inline CGFloat calBackViewHeight()
     //DDLogWarn(@"------%zi", index);
     self.currentIndex = index;
 }
+- (void)userClickedCenter
+{
+}
 
 /**  隐藏hub  */
 - (void)hideHub
@@ -294,10 +295,6 @@ static inline CGFloat calBackViewHeight()
     }];
     self.currentIndex = NSNotFound;
     [self.collectionView reloadData];
-}
-
-- (void)userClickedCenter
-{
 }
 
 #pragma mark CollectionView Delegate and DataSource
@@ -314,7 +311,6 @@ static inline CGFloat calBackViewHeight()
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
 {
     VBarCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([VBarCell class]) forIndexPath:indexPath];
-    //DDLogDebug(@"地址---%p section--%zi",cell,indexPath.section);
     cell.model = self.dataArray[indexPath.section];
     cell.indexPath = indexPath;
     cell.delegate = self;
