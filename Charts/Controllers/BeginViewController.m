@@ -25,7 +25,7 @@
 
 - (NSArray*)dataArray{
     if(!_dataArray){
-        _dataArray = @[@"V条形图"];
+        _dataArray = @[@"V条形图",@"H条形图"];
     }
     return _dataArray;
 }
@@ -59,8 +59,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    VBarViewController * homeVc = [[VBarViewController alloc]init];
-    [self.navigationController pushViewController:homeVc animated:YES];
+    if(indexPath.row == 0){
+        VBarViewController * homeVc = [[VBarViewController alloc]init];
+        [self.navigationController pushViewController:homeVc animated:YES];
+    }else if(indexPath.row == 1){
+        
+    }
+
 }
 
 
