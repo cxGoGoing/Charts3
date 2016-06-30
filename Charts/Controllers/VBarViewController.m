@@ -19,7 +19,6 @@
 @property (nonatomic, strong) VBarForeGroundView* collectionView;
 @property (nonatomic, strong) NSMutableArray* dataArray;
 @property (nonatomic, strong) VBarBackGroundView* backGroundView;
-@property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) ChartsTitleView* titleView; /**<  滚动视图  */
 @property (nonatomic, strong) UIButton* siftBtn;
 @property (nonatomic, assign) NSInteger currentIndex;

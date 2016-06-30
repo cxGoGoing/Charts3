@@ -63,7 +63,7 @@
         VBarViewController * homeVc = [[VBarViewController alloc]init];
         [self.navigationController pushViewController:homeVc animated:YES];
     }else if(indexPath.row == 1){
-        
+
     }
 
 }
